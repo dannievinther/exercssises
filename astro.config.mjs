@@ -7,11 +7,11 @@ import compress from "astro-compress";
 export default defineConfig({
   vite: {
     server: {
-      host: "0.0.0.0"
+      host: "0.0.0.0",
     },
     ssr: {
-      external: ["svgo"]
-    }
+      external: ["svgo"],
+    },
   },
-  integrations: [compress()]
+  integrations: [compress()],
 });
