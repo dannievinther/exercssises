@@ -1,0 +1,11 @@
+---
+const { type = "language-css" } = Astro.props
+---
+
+<code class={`token ${type}`}><slot /></code>
+
+<style>
+    code[class*=language-]:not(#id) {
+        color: #ffa956;
+    }
+</style>

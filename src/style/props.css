@@ -1,0 +1,96 @@
+:root {
+  --aquamarine-50: #f6fcfb;
+  --aquamarine-100: #d3f2ed;
+  --aquamarine-200: #adefe4;
+  --aquamarine-300: #82f4e1;
+  --aquamarine-400: #6ee2cf;
+  --aquamarine-500: #60cfbc;
+  --aquamarine-600: #55bbaa;
+  --aquamarine-700: #51a597;
+  --aquamarine-800: #508d83;
+  --aquamarine-900: #4e7972;
+
+  /* Greens */
+  --green-50: #e4f4ed;
+  --green-100: #c2ecd9;
+  --green-200: #9ceac7;
+  --green-300: #72f1b8;
+  --green-400: #61dea6;
+  --green-500: #55ca96;
+  --green-600: #4db687;
+  --green-700: #4d9c78;
+  --green-800: #4d856c;
+  --green-900: #4a7360;
+
+  /* Pinks */
+  --pink-50: #f1e4ec;
+  --pink-100: #e6c4d9;
+  --pink-200: #e0a3c8;
+  --pink-300: #e17fba;
+  --pink-400: #e957b0;
+  --pink-500: #fb37ad;
+  --pink-600: #e32397;
+  --pink-700: #bf2d85;
+  --pink-800: #9e3675;
+  --pink-900: #853a67;
+
+  /* Blues */
+  --blue-muted-comment: #a9bcce;
+  --blue-muted: #55718d;
+  --blue-500: #2ee5e5;
+  --blue-700: #0e395e;
+  --blue-800: #0d2e4e;
+  --blue-900: #0a2540;
+
+  --purple-50: #e4deed;
+  --purple-100: #9c84c1;
+  --purple-200: #8b68c0;
+  --purple-300: #7a49c4;
+  --purple-400: #6a2cc8;
+  --purple-500: #5d16c8;
+  --purple-600: #5000ca;
+  --purple-700: #4c12a4;
+  --purple-800: #471d86;
+  --purple-900: #42246f;
+
+  /* Grays */
+  --gray-200: #cccccc;
+  --gray-600: #4d4d4d;
+
+  --violet-100: #f3daf8;
+  --violet-200: #e2b9ea;
+  --violet-300: #d0a0da;
+  --violet-400: #be8cc8;
+  --violet-500: #ac7cb5;
+  --violet-600: #9b6fa4;
+  --violet-700: #8b6692;
+
+  --primary: var(--aquamarine-300);
+
+  --ui-primary: var(--green-300);
+
+  --ui-secondary: #ffa956;
+
+  --ui-secondary-a11y: hsl(29 100% 57%);
+  --ui-surface: hsl(270, 31%, 95%);
+  --ui-bg: hsl(267, 30%, 18%);
+  --ui-bg-2: hsl(266, 30%, 15%);
+  --ui-bg-3: hsl(289, 27%, 19%);
+  --ui-accent: var(--purple-600);
+
+  /* Spacing */
+  --space-8: 6rem;
+  --space-7: 3rem;
+  --space-6: 2rem;
+  --space-5: 1rem;
+  --space-4: 0.75rem;
+  --space-3: 0.5rem;
+  --space-2: 0.375rem;
+  --space-1: 0.25rem;
+
+  /* Border Radius */
+  --bdrs-round: 99rem;
+  --bdrs-l: 0.5rem;
+  --bdrs-md: 0.375rem;
+  --bdrs-sm: 0.1875rem;
+}

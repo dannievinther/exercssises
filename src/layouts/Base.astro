@@ -1,0 +1,38 @@
+---
+// src/layouts/Base.astro
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const {title} = Astro.props;
+
+---
+<html lang="da">
+<head>
+    <Head title={title}/>
+</head>
+<body>
+
+    <!-- <Header>
+      Exer<span class="stroke-text">CSS</span>ises
+    </Header>  -->
+    <Header />
+
+    <main>
+
+      <slot />
+
+    </main>
+
+    <Footer label="Flex-øvelser" linkTo="/flex" />
+
+    <script is:inline src="/script/bliss.js" fetchpriority="low"></script>
+    <script is:inline src="/script/prism.js" fetchpriority="low"></script>
+    <script is:inline src="/script/prism-live.js" fetchpriority="low"></script>
+    <script is:inline src="/script/prism-live-markup.js" fetchpriority="low"></script>
+    <script is:inline src="/script/prism-live-css.js" fetchpriority="low"></script>
+    <script is:inline src="/script/prism-linenumbers.js" fetchpriority="low"></script>
+    <script is:inline type="module" src="/script/custom.js" fetchpriority="low"></script>
+</body>
+</html>
+

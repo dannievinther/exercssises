@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon'
+const { icon } = Astro.props;
+---
+
+<button type="button" class={icon}>
+    <!-- <svg aria-hidden="true" width="18" height="18" fill="none" stroke="var(--btn-icon, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <use href={`#${icon}`}></use>
+    </svg> -->
+    {icon==="minus" ? (
+        <Icon name="lucide:minus-circle" width="18"  fill="none" />
+        ) : (<Icon name="lucide:plus-circle" width="18"  fill="none" />
+    )}
+    <span> <slot /> </span>
+</button>
+
+<style lang="scss">
+    [astro-icon] {
+        color: var(--btn-icon, var(--ui-secondary));
+        width: 1.375rem;
+        height: 1.375rem;
+    }
+    button.plus {
+        // --btn-icon: var(--ui-accent);
+        // --btn-icon: var(--ui-secondary);
+        // --btn-theme: var(--ui-accent);
+        box-shadow: none;
+    }
+    button.minus {
+        // --btn-icon: hsl(324 66% 37%);
+        // --btn-theme: hsl(324 66% 37%);
+        // --btn-bg: hsl(324 60% 85%);
+        // --btn-active: hsl(324 60% 80%);
+        box-shadow: none;
+    }
+</style>

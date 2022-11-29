@@ -1,0 +1,281 @@
+code[class*="language-"],
+pre[class*="language-"] {
+  // color: #f92aad;
+  // color: var(--code-color, var(--ui-secondary-a11y));
+  // color: #f97e72;
+  // color: #f92aad;
+  // color: #fb37ad;
+  color: #ffa956;
+  // text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3;
+  background: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+code[class*="language-html"],
+pre[class*="language-html"] {
+  color: #fff;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background-color: transparent;
+  // background-image: linear-gradient(to bottom, #2a2139 75%, #34294f);
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  // color: #8e8e8e;
+  // color: #717790;
+  color: var(--blue-muted-comment);
+}
+
+.token.punctuation {
+  color: #ccc;
+}
+
+.token.tag,
+.token.namespace,
+.token.number,
+.token.unit,
+.token.hexcode,
+.token.deleted {
+  // color: #e2777a;
+  color: var(--blue-500);
+}
+
+.token.attr-name {
+  color: #cbd5e1;
+}
+
+.token.selector,
+.token.property {
+  // color: #72f1b8;
+  color: #fff;
+  // color: var(--ui-primary);
+  // text-shadow: 0 0 2px #100c0f, 0 0 10px #257c5575, 0 0 35px #21272475;
+}
+
+.token.selector {
+  // color: #f8ebf8;
+  // color: #f4eee4;
+  color: var(--ui-primary);
+  // text-shadow: 0 0 2px #393a33, 0 0 8px #f39f0572, 0 0 2px #f39f0572;
+}
+
+.token.function-name {
+  color: #6196cc;
+  color: #00d4ff;
+}
+
+.token.function {
+  color: #00d4ff;
+  color: #a7b6ff;
+}
+
+/*.token.function,*/
+.token.boolean,
+.token.selector .token.id {
+  color: #fdfdfd;
+  // text-shadow: 0 0 2px #001716, 0 0 3px #03edf975, 0 0 5px #03edf975,
+  //   0 0 8px #03edf975;
+}
+
+.token.class-name {
+  color: #fff5f6;
+  // text-shadow: 0 0 2px #000, 0 0 10px #fc1f2c75, 0 0 5px #fc1f2c75,
+  //   0 0 25px #fc1f2c75;
+}
+
+.token.constant,
+.token.symbol {
+  color: #f92aad;
+  // color: var(--ui-secondary-a11y);
+  // text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3;
+}
+
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.selector .token.class,
+.token.builtin {
+  color: #f4eee4;
+  // text-shadow: 0 0 2px #393a33, 0 0 8px #f39f0575, 0 0 2px #f39f0575;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  // color: #f87c32;
+  color: #72f1b8;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  padding-left: clamp(3.56rem, calc(3.36rem + 1.02vw), 4.13rem);
+  counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  // top: 0;
+  top: -0.225em;
+  font-size: 100%;
+  left: -3.8em;
+  left: calc(-1 * clamp(3.56rem, calc(3.36rem + 1.02vw), 4.13rem));
+  width: 3em; /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  // border-right: 1px solid #999;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  // color: #999;
+  color: var(--blue-muted);
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+div.prism-live {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  font-size: 1.08em;
+}
+
+textarea.prism-live,
+pre.prism-live {
+  padding: 0.2rem 0.5rem;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+textarea.prism-live {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: transparent;
+  /* color: hsla(0,0%,50%,.4); */
+  cursor: text;
+  white-space: pre;
+  border: 0;
+  outline: none;
+  background: transparent;
+  resize: none;
+  // --selection-background: hsl(320, 80%, 25%);
+  --selection-background: #adbdcc33;
+  // --selection-color: hsla(0, 0%, 100%, 0.8);
+}
+
+@supports (not (caret-color: black)) and (-webkit-text-fill-color: black) {
+  textarea.prism-live {
+    color: inherit;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Setting specific colors is needed
+	 * because otherwise Firefox shows blank text */
+textarea.prism-live::-moz-selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
+}
+
+textarea.prism-live::selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
+}
+
+pre.prism-live {
+  flex: 1;
+  position: relative;
+  pointer-events: none;
+  overflow: hidden;
+  max-height: 100%;
+  --scrollbar-width: 17px;
+  padding-bottom: var(--scrollbar-width);
+  padding-right: var(--scrollbar-width);
+}
+
+pre.prism-live > code:empty::before {
+  content: " ";
+}
