@@ -293,14 +293,14 @@
   //   document.body.removeChild(element);
   // }
 
-  const footerBtn = document.querySelector(".dbclick");
+  // const footerBtn = document.querySelector(".dbclick");
 
-  footerBtn.addEventListener("dblclick", (e) => {
-    document.documentElement.dataset.extra = "true";
-    document
-      .querySelectorAll("section[data-extra='true']")[0]
-      .scrollIntoView({ behavior: "smooth" });
-  });
+  // footerBtn.addEventListener("dblclick", (e) => {
+  //   document.documentElement.dataset.extra = "true";
+  //   document
+  //     .querySelectorAll("section[data-extra='true']")[0]
+  //     .scrollIntoView({ behavior: "smooth" });
+  // });
 
   const keySequence = [];
   let konamiString = "";
