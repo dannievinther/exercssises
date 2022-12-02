@@ -2,13 +2,15 @@
 import Button from "../components/Button.astro";
 import Popup from "../components/Popup.astro";
 import { Icon } from 'astro-icon'
+import ExerciseLabel from "./ExerciseLabel.astro";
 const { data, num, all, dataSuffix } = Astro.props;
 const boxes = [...Array(data.frontmatter.boxes)]
 const { customClass, help, Content } = data
 ---
 
 <section data-extra={data.frontmatter.isExtra && "true"} data-exercise-key={data.frontmatter.id} class={data.frontmatter.customClass ?? ""}>
-        <h2 class="small-label" id={`exercise-${num}`}><a href={`#exercise-${num}`}>Øvelse {num} af {all}</a></h2>
+        <!-- <h2 class="small-label" id={`exercise-${num}`}><a href={`#exercise-${num}`}>Øvelse {num} af {all}</a></h2> -->
+        <ExerciseLabel {num} {all} />
 
         {data.frontmatter.isExtra && (
             <div class="banner" data-banner-title="Ekstra"></div>

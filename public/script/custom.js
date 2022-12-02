@@ -10,15 +10,15 @@
   // }
   // observeHeader();
 
-  const copyMe = document.querySelectorAll("h2 a[href]");
+  // const copyMe = document.querySelectorAll("h2 a[href]");
 
-  copyMe.forEach((c) => {
-    c.addEventListener("click", ({ target }) => {
-      const url = window.location.href.split("#")[0];
-      if (target.tagName === "A")
-        navigator.clipboard.writeText(`${url}${c.hash}`);
-    });
-  });
+  // copyMe.forEach((c) => {
+  //   c.addEventListener("click", ({ target }) => {
+  //     const url = window.location.href.split("#")[0];
+  //     if (target.tagName === "A")
+  //       navigator.clipboard.writeText(`${url}${c.hash}`);
+  //   });
+  // });
 
   const sections = document.querySelectorAll("section");
   // const outputs = document.querySelectorAll(".output");

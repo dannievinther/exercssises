@@ -1,0 +1,19 @@
+---
+const { num, all } = Astro.props;
+---
+
+<h2 class="small-label" id={`exercise-${num}`}>
+  <a href={`#exercise-${num}`}>Øvelse {num} af {all}</a>
+</h2>
+
+<script>
+  const copyMe = document.querySelectorAll(".small-label a");
+
+  copyMe.forEach((c) => {
+    c.addEventListener("click", ({ target }) => {
+      const url = window.location.href.split("#")[0];
+      if (target.tagName === "A")
+        navigator.clipboard.writeText(`${url}${c.hash}`);
+    });
+  });
+</script>
