@@ -81,19 +81,19 @@
     const plus = section.querySelector(".plus");
     const minus = section.querySelector(".minus");
 
-    const popup = section.querySelector(".popup");
-    const popupSum = popup.querySelector("summary");
+    // const popup = section.querySelector(".popup");
+    // const popupSum = popup.querySelector("summary");
 
-    popup.addEventListener("click", dismiss, { once: true });
+    // popup.addEventListener("click", dismiss, { once: true });
 
-    function dismiss() {
-      document.addEventListener("click", ({ target }) => {
-        if (target !== popupSum) {
-          popup.open = false;
-          return;
-        }
-      });
-    }
+    // function dismiss() {
+    //   document.addEventListener("click", ({ target }) => {
+    //     if (target !== popupSum) {
+    //       popup.open = false;
+    //       return;
+    //     }
+    //   });
+    // }
 
     reset.addEventListener("click", (e) => {
       if (_tA.value === "") {

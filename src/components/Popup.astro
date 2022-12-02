@@ -31,21 +31,6 @@ const htmlContentAlt = `<div class="container">
   </div>
 </details>
 
-<script>
-  // const popup = document.querySelector(".popup");
-
-  // const popupSum = popup.querySelectorAll("summary");
-  // popup.addEventListener("click", dismiss, { once: true });
-  // function dismiss() {
-  //   document.addEventListener("click", ({ target }) => {
-  //     if (target !== popupSum) {
-  //       popup.open = false;
-  //       return;
-  //     }
-  //   });
-  // }
-</script>
-
 <style lang="scss">
   .popup {
     position: relative;
@@ -155,3 +140,20 @@ const htmlContentAlt = `<div class="container">
     display: none; /* for Chrome, Safari, and Opera */
   }
 </style>
+
+<script>
+  const popup = document.querySelectorAll(".popup");
+
+  popup.forEach((pop) => {
+    const popupSum = pop.querySelectorAll("summary");
+    pop.addEventListener("click", dismiss, { once: true });
+    function dismiss() {
+      document.addEventListener("click", ({ target }) => {
+        if (target !== popupSum) {
+          pop.open = false;
+          return;
+        }
+      });
+    }
+  });
+</script>

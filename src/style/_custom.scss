@@ -929,6 +929,10 @@ button.reset::before {
   opacity: 0;
 }
 
+button.reset svg path {
+  stroke-width: 3;
+}
+
 button:focus-visible {
   --btn-stroke: 2px;
 }
