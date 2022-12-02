@@ -6,6 +6,12 @@ const { num, all } = Astro.props;
   <a href={`#exercise-${num}`}>Øvelse {num} af {all}</a>
 </h2>
 
+<style>
+  a:hover {
+    text-decoration: none;
+  }
+</style>
+
 <script>
   const copyMe = document.querySelectorAll(".small-label a");
 
