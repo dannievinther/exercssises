@@ -10,14 +10,16 @@ const { customClass, help, Content } = data
 
 <section data-extra={data.frontmatter.isExtra && "true"} data-exercise-key={data.frontmatter.id} class={data.frontmatter.customClass ?? ""}>
         <!-- <h2 class="small-label" id={`exercise-${num}`}><a href={`#exercise-${num}`}>Øvelse {num} af {all}</a></h2> -->
-        <ExerciseLabel {num} {all} />
+        <ExerciseLabel title={data.frontmatter.title} {num} {all} />
 
         {data.frontmatter.isExtra && (
-            <div class="banner" data-banner-title="Ekstra"></div>
+            <div class="banner" data-banner-title="Ekstra">
+              Ekstra
+            </div>
         )}
 
         <article class="exercise-details">
-          <h3>{data.frontmatter.title}</h3>
+          <!-- <h3>{data.frontmatter.title}</h3> -->
           <div class="exercise-content">
           
               <Content />
@@ -72,7 +74,7 @@ const { customClass, help, Content } = data
               <!--<svg aria-hidden="true" width="16" height="16">
                 <use href="#reset-icon"/>
               </svg>-->
-              <Icon name="grommet-icons:revert" width="16" height="16" />
+              <Icon name="subway:refresh-time" width="16" height="16" />
             </button>
             <div class="button-group-confirm">
               <button data-accept="true" data-message="Accepter">

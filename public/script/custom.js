@@ -99,6 +99,7 @@
       if (_tA.value === "") {
         resetUI();
       } else {
+        reset.setAttribute("inert", "");
         resetBtns.classList.add("active");
         confirming.querySelector(":scope > :first-child").focus();
       }
@@ -106,12 +107,9 @@
 
     confirming.addEventListener("click", ({ target }) => {
       let option = target.dataset.accept;
-      if (option === "true") {
-        resetBtns.classList.remove("active");
-        resetUI();
-      } else {
-        resetBtns.classList.remove("active");
-      }
+      if (option === "true") resetUI();
+      resetBtns.classList.remove("active");
+      reset.removeAttribute("inert");
     });
 
     function resetUI() {
@@ -136,7 +134,7 @@
     }
 
     output.addEventListener("dblclick", (_) => {
-      output.getAttribute("style") && output.removeAttribute("style");
+      output.hasAttribute("style") && output.removeAttribute("style");
     });
 
     function prefix(str) {
@@ -151,10 +149,9 @@
 
       if (localStorage.getItem(boxKey)) {
         boxes = localStorage.getItem(boxKey);
-        minus.disabled = boxes > 0 ? false : true;
-      } else {
-        minus.disabled = boxes > 0 ? false : true;
       }
+
+      minus.disabled = boxes > 0 ? false : true;
 
       plus.addEventListener("click", (e) => {
         addBox();
@@ -301,6 +298,10 @@
   //     .querySelectorAll("section[data-extra='true']")[0]
   //     .scrollIntoView({ behavior: "smooth" });
   // });
+
+  // This code creates a key sequence array, and then uses that array to compare
+  // the user's input to the Konami code. If the user enters the correct sequence,
+  // it scrolls the page to the hidden section.
 
   const keySequence = [];
   let konamiString = "";

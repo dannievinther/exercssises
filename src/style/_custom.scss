@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Mona Sans";
+  src: url("/assets/fonts/Mona-Sans.woff2") format("woff2 supports variations"),
+    url("/assets/fonts/Mona-Sans.woff2") format("woff2-variations");
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
+@font-face {
   font-family: "Wotfard";
   src: url("/assets/fonts/wotfard-semibold.woff2") format("woff2");
   font-style: normal;
@@ -19,13 +27,13 @@
   font-weight: 300;
   text-rendering: optimizeLegibility;
 }
-@font-face {
-  font-family: "Sql Wd";
-  src: url("/assets/fonts/sqlwd.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 300;
-  text-rendering: optimizeLegibility;
-}
+// @font-face {
+//   font-family: "Sql Wd";
+//   src: url("/assets/fonts/sqlwd.woff2") format("woff2");
+//   font-style: normal;
+//   font-weight: 300;
+//   text-rendering: optimizeLegibility;
+// }
 
 @font-face {
   font-family: "OpMn";
@@ -164,7 +172,7 @@
 html {
   /* block-size: 100%; */
   // scroll-padding-block-start: var(--space-7);
-  scroll-padding-block-start: var(--space-5);
+  scroll-padding-block-start: var(--space-7);
   touch-action: pan-y;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
@@ -174,23 +182,27 @@ body {
   display: flow-root;
   /* min-height: 100%; */
   /* padding-block: 6rem; */
-  background: #3a243f;
-  // background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2418%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient2419)'%3e%3c/rect%3e%3cpath d='M1440 0L1424.96 0L1440 271.4z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1424.96 0L1440 271.4L1440 374.90999999999997L1143.8200000000002 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M1143.82 0L1440 374.90999999999997L1440 463.26L1101.3 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M1101.3 0L1440 463.26L1440 525.38L956.29 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L295.09 560L0 525.72z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 525.72L295.09 560L341.12 560L0 279.02000000000004z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 279.02L341.12 560L967.6 560L0 196.42999999999998z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 196.42999999999995L967.6 560L1115.04 560L0 114.16999999999994z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2418'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2419'%3e%3cstop stop-color='rgba(44%2c 32%2c 59%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(44%2c 32%2c 59%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e")
-  //   50% / cover no-repeat fixed;
-  // background: var(--bg);
-  //background: var(--blue-900);
-  --bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1034%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient1035)'%3e%3c/rect%3e%3cpath d='M1440 0L1424.96 0L1440 271.4z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1424.96 0L1440 271.4L1440 374.90999999999997L1143.8200000000002 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M1143.82 0L1440 374.90999999999997L1440 463.26L1101.3 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M1101.3 0L1440 463.26L1440 525.38L956.29 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L295.09 560L0 525.72z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 525.72L295.09 560L341.12 560L0 279.02000000000004z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 279.02L341.12 560L967.6 560L0 196.42999999999998z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 196.42999999999995L967.6 560L1115.04 560L0 114.16999999999994z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1034'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1035'%3e%3cstop stop-color='rgba(22%2c 21%2c 43%2c 1)' offset='0.01'%3e%3c/stop%3e%3cstop stop-color='rgba(19%2c 16%2c 57%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e")
-    50% / cover no-repeat fixed;
-  background: #0a2540;
-  background-image: conic-gradient(
-      at 16.7% calc(100% - 16.7%),
-      transparent 25%,
-      hsl(210deg 73% 8%) 0
-    ),
-    linear-gradient(to bottom, hsl(182deg 67% 48% / 0.15), transparent),
-    linear-gradient(to bottom left, hsl(264deg 100% 40% / 20%), transparent 50%);
-  background-size: 4px 4px, 100vw 200vh, 100vw 200vh;
-  background-repeat: repeat, no-repeat, no-repeat;
+
+  // background: #0a2540;
+  // background-image: conic-gradient(
+  //     at 16.7% calc(100% - 16.7%),
+  //     transparent 25%,
+  //     hsl(210deg 73% 8%) 0
+  //   ),
+  //   linear-gradient(to bottom, hsl(182deg 67% 48% / 0.15), transparent),
+  //   linear-gradient(to bottom left, hsl(264deg 100% 40% / 20%), transparent 50%);
+  // background-size: 4px 4px, 100vw 200vh, 100vw 200vh;
+  // background-repeat: repeat, no-repeat, no-repeat;
+
+  --grid: 12;
+  --bg: hsl(209deg 15% 90%);
+  --pct: 30%;
+  --lines: var(--blue-muted-comment);
+  background: linear-gradient(90deg, var(--bg), var(--pct), #fff0),
+    linear-gradient(-90deg, var(--bg), var(--pct), #fff0),
+    conic-gradient(from 90deg at 1px 1px, #0000 90deg, var(--lines) 0) 50% 50% /
+      calc((1200px - 2rem) / var(--grid)) calc(1200px / var(--grid)),
+    var(--bg);
 }
 
 .front {
@@ -221,11 +233,13 @@ h3 {
 }
 
 p {
-  font-family: "Wotfard", Segoe UI, system-ui, -apple-system, sans-serif;
-  font-weight: 300;
-  font-size: 19px;
+  font-family: "Mona Sans", "Wotfard", Segoe UI, system-ui, -apple-system,
+    sans-serif;
+  // font-weight: 300;
+  font-weight: 400;
+  font-size: 18px;
   --min-font: 16;
-  --max-font: 19;
+  --max-font: 18;
   --screen-max: 1200;
   --screen-min: 375;
   font-size: clamp(
@@ -249,8 +263,13 @@ footer {
     );
   gap: var(--space-7) 0;
   text-align: center;
+  // margin-block-start: var(--space-7);
+  // margin-block-end: var(--space-7);
+
+  padding-block-start: var(--space-7);
+  padding-block-end: var(--space-7);
+  background: var(--blue-900);
   margin-block-start: var(--space-7);
-  margin-block-end: var(--space-7);
 }
 
 footer > * {
@@ -283,7 +302,8 @@ main {
   --filter: grayscale(0);
 
   .small-label {
-    transform: scale(1.1);
+    --font-stretch: 100;
+    // transform: scale(1.1);
     // transition: 0.3s transform;
   }
 }
@@ -309,6 +329,10 @@ section {
   border-radius: var(--bdrs-l);
   transition: filter 0.2s;
 
+  margin-inline-start: var(--space-6);
+  box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
+  margin-block-end: var(--space-6);
+
   & > * {
     filter: var(--filter, grayscale(0.8));
     transition: filter 0.2s;
@@ -316,7 +340,7 @@ section {
 
   &::before,
   &::after {
-    content: "";
+    content: none;
     position: absolute;
     z-index: -1;
     width: calc(100% - 1rem);
@@ -355,6 +379,8 @@ section:has(:target) {
   min-height: 95vh;
   grid-template-rows: min-content min-content 1fr;
 
+  min-height: calc(100vh - 2 * var(--space-6));
+
   @media (max-width: 895px) {
     grid-template-rows: min-content min-content min-content 1fr;
   }
@@ -375,7 +401,7 @@ section .exercise-details {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
   // gap: inherit;
   gap: var(--space-3) var(--space-6);
-  margin-block-start: calc(-1 * var(--space-5));
+  // margin-block-start: calc(-1 * var(--space-5));
 }
 
 section .exercise-details img {
@@ -418,7 +444,7 @@ section .hints {
 }
 
 .exercise-content {
-  grid-row: span 2;
+  // grid-row: span 2;
 }
 
 .exercise-content details {
@@ -773,6 +799,11 @@ section.bg-image .output > div {
   border-radius: var(--bdrs-l);
   // border: 2px dashed var(--ui-accent);
 
+  block-size: calc(100% + 2 * var(--space-6));
+  margin-inline-start: calc(-2 * var(--space-6));
+  margin-block-end: calc(-2 * var(--space-6));
+  box-shadow: 0 39.275px 70px -14.275px rgb(0 0 0 / 30%);
+
   .editor-actions {
     display: flex;
     align-items: center;
@@ -967,7 +998,8 @@ button:focus-visible {
   display: inline-block;
   padding-inline: var(--space-2);
   padding-block: 0;
-  font-size: 0.85em;
+  // font-size: 0.85em;
+  font-size: 0.9em;
   // background: #2a2138;
   // background: var(--blue-800);
   // color: #72f1b8;
@@ -1026,30 +1058,33 @@ html:not([data-extra="true"]) section[data-extra="true"] {
 }
 
 section .banner {
-  overflow: hidden;
-  overflow: clip;
-  overflow-clip-margin: 2px;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  // overflow: hidden;
+  // overflow: clip;
+  // overflow-clip-margin: 2px;
+  // position: absolute;
+  // inset: 0;
+  // pointer-events: none;
 }
 
-section .banner::before {
-  content: attr(data-banner-title);
+section .banner {
+  // content: attr(data-banner-title);
   position: absolute;
   inset-block-start: 0;
   inset-inline-end: 0;
   text-align: center;
-  padding: var(--space-3) var(--space-6);
+  padding: var(--space-3);
+  line-height: 1;
   font-weight: 800;
-  font-size: 1em;
+  font-size: 0.7em;
   text-transform: uppercase;
   color: #fff;
-  transform: translateY(-100%) rotate(90deg) translateX(70.710678118%)
-    rotate(-45deg); /* cos(45 * π / 180) */
-  transform-origin: bottom right;
+  margin: var(--space-1);
+  // transform: translateY(-100%) rotate(90deg) translateX(70.710678118%)
+  //   rotate(-45deg); /* cos(45 * π / 180) */
+  // transform-origin: bottom right;
   background: var(--ui-accent);
-  box-shadow: 0 5px 10px -2px #0006;
+  border-radius: calc(var(--bdrs-l) - (var(--space-1) / 2));
+  // box-shadow: 0 5px 10px -2px #0006;
 }
 
 /* [data-konami="true"] body {

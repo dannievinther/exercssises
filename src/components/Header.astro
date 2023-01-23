@@ -1,12 +1,15 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
 ---
+
 <header class="main-header">
-    <a class="back" href="/"><Icon name="lucide:chevron-left" width="18" />&nbsp;Til exercssises</a>
-    <!-- <h1 aria-label="CSS Exercises">
+  <a class="back" href="/"
+    ><Icon name="lucide:chevron-left" width="18" />&nbsp;Til exercssises</a
+  >
+  <!-- <h1 aria-label="CSS Exercises">
         <slot />
     </h1> -->
-    <!-- <div class="exercise-logo">
+  <!-- <div class="exercise-logo">
         <Icon name="lucide:layout-dashboard" width="28" height="28" />
     </div>
     <h1>Grid Exercises</h1>
@@ -15,100 +18,104 @@ import { Icon } from 'astro-icon'
 </header>
 
 <style lang="scss" is:global>
-    .main-header {
-        display: grid;
-        grid: auto/minmax(var(--space-5), 1fr) minmax(auto, 1200px) minmax(var(--space-5), 1fr);
-        gap: var(--space-5) 0;
-        // padding-block: var(--space-8) var(--space-8);
-        padding-block: var(--space-6);
-        background: #fff;
-        margin-block-end: var(--space-9);
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--space-6)), 0 100%);
-        /*z-index: 100;*/
-        /*pointer-events: none;*/
+  .main-header {
+    display: grid;
+    grid: auto/minmax(var(--space-5), 1fr) minmax(auto, 1200px) minmax(
+        var(--space-5),
+        1fr
+      );
+    gap: var(--space-5) 0;
+    // padding-block: var(--space-8) var(--space-8);
+    padding-block: var(--space-6);
+    background: #fff;
+    margin-block-end: var(--space-9);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--space-6)), 0 100%);
+    /*z-index: 100;*/
+    /*pointer-events: none;*/
 
-        & > * {
-            grid-column: 2;
+    & > * {
+      grid-column: 2;
+    }
+
+    p {
+      max-width: 50ch;
+    }
+
+    .back:any-link {
+      font-family: "Mona Sans", system-ui;
+      display: flex;
+      gap: 0.55ch;
+      align-items: center;
+      inline-size: fit-content;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      text-decoration: none;
+
+      &:hover,
+      &:hover svg {
+        color: #212529;
+      }
+
+      svg {
+        color: var(--gray-200);
+
+        path {
+          stroke-width: 3;
         }
+      }
+    }
 
-        p {
-            max-width: 50ch;
-        }
+    .btn:any-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      background: var(--blue-800);
+      border: 2px solid var(--blue-800);
+      justify-self: start;
+      color: #fff;
+      border-radius: 1e5px;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.25;
+      transition: 0.15s;
 
-        .back:any-link {
-            display: flex;
-            gap: .55ch;
-            align-items: center;
-            inline-size: fit-content;
-            font-weight: 600;
-            font-size: .9rem;
-            color: var(--gray-600);
-            text-decoration: none;
+      &:hover {
+        color: var(--blue-800);
+        background: transparent;
+      }
+    }
 
-            &:hover,
-            &:hover svg {
-                color: #212529;
-            }
+    h1 {
+      font-weight: 900;
+      // text-transform: uppercase;
+      font-size: 4rem;
+      --min-font: 40;
+      --max-font: 64;
+      font-size: clamp(
+        var(--min-font) * 1px,
+        var(--responsive),
+        var(--max-font) * 1px
+      );
+      line-height: 1.125;
+      // cursor: pointer;
+      // justify-self: center;
+      // -webkit-user-select: none;
+      // user-select: none;
+      // // background: #2a2139;
+      // // background: #141330;
+      // background: var(--blue-900);
+      // will-change: transform;
+      // padding-inline: var(--space-5);
+      // border-radius: 8px;
+      // transform-origin: 0 0;
+      // transition: 0.1s cubic-bezier(0.5, 0, 0.5, 1);
+      // pointer-events: auto;
+      // position: relative;
+    }
 
-            svg {
-                color: var(--gray-200);
-
-                path {
-                    stroke-width: 3;
-                }
-            }
-        }
-
-        .btn:any-link {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-3) var(--space-5);
-            background: var(--blue-800);
-            border: 2px solid var(--blue-800);
-            justify-self: start;
-            color: #fff;
-            border-radius: 1e5px;
-            font-weight: 600;
-            text-decoration: none;
-            line-height: 1.25;
-            transition: .15s;
-
-            &:hover {
-                color: var(--blue-800);
-                background: transparent;
-            }
-        }
-
-        h1 {
-            font-weight: 900;
-            // text-transform: uppercase;
-            font-size: 4rem;
-            --min-font: 40;
-            --max-font: 64;
-            font-size: clamp(
-            var(--min-font) * 1px,
-            var(--responsive),
-            var(--max-font) * 1px
-            );
-              line-height: 1.125;
-            // cursor: pointer;
-            // justify-self: center;
-            // -webkit-user-select: none;
-            // user-select: none;
-            // // background: #2a2139;
-            // // background: #141330;
-            // background: var(--blue-900);
-            // will-change: transform;
-            // padding-inline: var(--space-5);
-            // border-radius: 8px;
-            // transform-origin: 0 0;
-            // transition: 0.1s cubic-bezier(0.5, 0, 0.5, 1);
-            // pointer-events: auto;
-            // position: relative;
-        }
-
-        /*&.is-pinned {
+    /*&.is-pinned {
             position: sticky;
             top: -1px;
 
@@ -140,19 +147,20 @@ import { Icon } from 'astro-icon'
             --c: var(--ui-secondary, #fb28a8);
             max-width: 1.05ch;
         }*/
-    }
+  }
 
-    .exercise-logo {
-        max-width: min-content;
-        padding: 0.8rem;
-        border: 5px double #dedee0;
-        border-radius: 1e5px;
-        color: var(--blue-700);
-        background: radial-gradient(#fff 0 0) content-box, hsl(209deg 27% 93%) padding-box;
-        aspect-ratio: 1;
-    }
+  .exercise-logo {
+    max-width: min-content;
+    padding: 0.8rem;
+    border: 5px double #dedee0;
+    border-radius: 1e5px;
+    color: var(--blue-700);
+    background: radial-gradient(#fff 0 0) content-box,
+      hsl(209deg 27% 93%) padding-box;
+    aspect-ratio: 1;
+  }
 
-    .exercise-logo svg {
-        display: block;
-    }
+  .exercise-logo svg {
+    display: block;
+  }
 </style>

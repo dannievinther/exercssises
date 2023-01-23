@@ -146,14 +146,21 @@ const htmlContentAlt = `<div class="container">
 
   popup.forEach((pop) => {
     const popupSum = pop.querySelectorAll("summary");
-    pop.addEventListener("click", dismiss, { once: true });
-    function dismiss() {
-      document.addEventListener("click", ({ target }) => {
-        if (target !== popupSum) {
-          pop.open = false;
-          return;
-        }
-      });
-    }
+    pop.addEventListener(
+      "click",
+      () => {
+        dismiss(pop, popupSum);
+      },
+      { once: true }
+    );
   });
+
+  function dismiss(details, summary) {
+    document.addEventListener("click", ({ target }) => {
+      if (target !== summary) {
+        details.open = false;
+        return;
+      }
+    });
+  }
 </script>
