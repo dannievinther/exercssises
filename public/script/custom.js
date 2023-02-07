@@ -22,6 +22,7 @@
 
   const sections = document.querySelectorAll("section");
   // const outputs = document.querySelectorAll(".output");
+  // const classReg = /[^,/*{}\s]+(?![^{]*})/g;
   const classReg = /(?!\s)[^,()/*{}]+(?![^{]*})/g;
 
   // outputs.forEach((output) => {
