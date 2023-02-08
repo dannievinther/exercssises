@@ -947,7 +947,7 @@ button.reset {
   background: transparent;
   display: grid;
   place-content: center;
-  border-radius: var(--bdrs-md);
+  border-radius: var(--bdrs-round);
 }
 
 button.reset::before {
@@ -959,7 +959,7 @@ button.reset::before {
   inset-block-start: 0;
   font-size: 0.7em;
   font-family: "Mona Sans";
-  font-weight: 500;
+  font-weight: 700;
   block-size: 28px;
   margin-block-start: 0.125em;
   display: grid;
