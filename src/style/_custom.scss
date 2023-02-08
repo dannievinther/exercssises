@@ -947,6 +947,7 @@ button.reset {
   background: transparent;
   display: grid;
   place-content: center;
+  border-radius: var(--bdrs-md);
 }
 
 button.reset::before {
