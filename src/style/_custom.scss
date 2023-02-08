@@ -486,9 +486,11 @@ section .hints {
   inline-size: max-content;
   // padding: var(--space-3) var(--space-4) var(--space-1);
   text-transform: uppercase;
-  font-family: "Wotfard", Segoe UI, system-ui, -apple-system, sans-serif;
+  // font-family: "Wotfard", Segoe UI, system-ui, -apple-system, sans-serif;
+  font-variation-settings: "wdth" 120;
+  font-family: "Mona Sans", system-ui;
   font-size: 0.7em;
-  font-weight: 600;
+  font-weight: 700;
   // color: hsl(153 20% 40%);
   cursor: pointer;
   user-select: none;
