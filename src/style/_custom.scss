@@ -905,6 +905,9 @@ button {
     inset;
   transition: 0.2s box-shadow;
   will-change: box-shadow;
+
+  font-variation-settings: "wdth" 120;
+  font-family: Mona Sans, system-ui;
 }
 
 button:focus {
