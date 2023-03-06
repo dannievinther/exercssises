@@ -7,35 +7,6 @@
 }
 
 @font-face {
-  font-family: "Wotfard";
-  src: url("/assets/fonts/wotfard-semibold.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizeLegibility;
-}
-@font-face {
-  font-family: "Wotfard";
-  src: url("/assets/fonts/wotfard-medium.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
-}
-@font-face {
-  font-family: "Wotfard";
-  src: url("/assets/fonts/wotfard-regular.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 300;
-  text-rendering: optimizeLegibility;
-}
-// @font-face {
-//   font-family: "Sql Wd";
-//   src: url("/assets/fonts/sqlwd.woff2") format("woff2");
-//   font-style: normal;
-//   font-weight: 300;
-//   text-rendering: optimizeLegibility;
-// }
-
-@font-face {
   font-family: "OpMn";
   src: url("/assets/fonts/OperatorMono-Medium.woff2") format("woff2");
   font-style: normal;
@@ -175,11 +146,11 @@ html {
   scroll-padding-block-start: var(--space-7);
   touch-action: pan-y;
   scroll-behavior: smooth;
-  overscroll-behavior: contain;
 }
 
 body {
   display: flow-root;
+  overscroll-behavior: none;
   /* min-height: 100%; */
   /* padding-block: 6rem; */
 
@@ -195,7 +166,7 @@ body {
   // background-repeat: repeat, no-repeat, no-repeat;
 
   --grid: 12;
-  --bg: hsl(209deg 15% 90%);
+  --bg: hsl(209deg 15% 93%);
   --pct: 30%;
   --lines: var(--blue-muted-comment);
   background: linear-gradient(90deg, var(--bg), var(--pct), #fff0),
@@ -581,20 +552,17 @@ section [data-no-hints] {
 }
 
 :is(.exercise-details p > code, .hints li)[data-type="value"] {
-  /* --m: rgb(249, 42, 173); */
-  // --m: rgb(255 47 179);
-  // --m: var(--ui-secondary-a11y);
   --m: var(--ui-secondary);
   --mbg: var(--pink-900);
 }
 
 .output:is(.editor:focus-within + *) {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %235000ca; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 1s infinite linear'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %23a9bcce; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 1s infinite linear'/%3E%3C/svg%3E")
     border-box;
 
   border-color: transparent;
   // box-shadow: 0 0 36px #5000ca22;
-  filter: drop-shadow(0 0 15px #5000ca11);
+  // filter: drop-shadow(0 0 15px #5000ca11);
   transition: filter 0.15s;
 }
 
@@ -628,7 +596,7 @@ section [data-no-hints] {
   // border-radius: var(--bdrs-l);
   user-select: none;
   border-radius: var(--bdrs-sm);
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %235000ca; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 0s infinite linear'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %23a9bcce; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 0s infinite linear'/%3E%3C/svg%3E")
     border-box;
   padding: var(--padding);
   margin: calc(var(--padding) * -1);

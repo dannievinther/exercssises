@@ -1,231 +1,280 @@
 ---
 import Button from "../components/Button.astro";
 import Popup from "../components/Popup.astro";
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
 import ExerciseLabel from "./ExerciseLabel.astro";
-const { data, num, all, dataSuffix } = Astro.props;
-const boxes = [...Array(data.frontmatter.boxes)]
-const { customClass, help, Content } = data
+const { data, num, all } = Astro.props;
+const boxes = [...Array(data.frontmatter.boxes)];
+const { customClass, help, Content } = data;
 ---
 
-<section data-extra={data.frontmatter.isExtra && "true"} data-exercise-key={data.frontmatter.id} class={data.frontmatter.customClass ?? ""}>
-        <!-- <h2 class="small-label" id={`exercise-${num}`}><a href={`#exercise-${num}`}>Øvelse {num} af {all}</a></h2> -->
-        <ExerciseLabel title={data.frontmatter.title} {num} {all} />
+<section
+  data-extra={data.frontmatter.isExtra && "true"}
+  data-exercise-key={data.frontmatter.id}
+  class={data.frontmatter.customClass ?? ""}
+>
+  <ExerciseLabel title={data.frontmatter.title} {num} {all} />
 
-        {data.frontmatter.isExtra && (
-            <div class="banner" data-banner-title="Ekstra">
-              Ekstra
-            </div>
-        )}
+  {
+    data.frontmatter.isExtra && (
+      <div class="banner" data-banner-title="Ekstra">
+        Ekstra
+      </div>
+    )
+  }
 
-        <article class="exercise-details">
-          <!-- <h3>{data.frontmatter.title}</h3> -->
-          <div class="exercise-content">
-          
-              <Content />
-              
-              {data.frontmatter.hints ? (
-                  <details>
-                      <summary>Hints <Icon name="lucide:chevron-down" width="16" height="16" aria-hidden="true" /></summary>
-                      {data.frontmatter.hints.some(hint => hint.type==="property") && (
-                        <ul class="hints properties">
-                          {data.frontmatter.hints.filter(hint => hint.type==="property").map(hint=>{
-                              return <li data-type={hint.type}><code>{hint.name}</code></li>      
-                          })}
-                      </ul>)}
-                      {data.frontmatter.hints.some(hint => hint.type==="value") && (
-                        <ul class="hints values">
-                          {data.frontmatter.hints.filter(hint => hint.type==="value").map(hint=>{
-                              return <li data-type={hint.type}><code>{hint.name}</code></li>
-                          })}
-                      </ul>
-                      )}
-                  </details>
-              ) : (
-                  <div data-no-hints>Ingen hints</div>
-              )}
-            </div>
-            {data.frontmatter.targetSrc.type==="video" ? (
-                  <video muted loop autoplay playsinline preload="metadata">
-                      <source src={data.frontmatter.targetSrc.path} type="video/mp4" />
-                  </video>
-              ) : (
-                  <img loading={num===1 ? "eager" : "lazy"} fetchpriority={num===1 ? "high" : "low"} src={data.frontmatter.targetSrc.path} alt="" width={data.frontmatter.targetSrc.width} height={data.frontmatter.targetSrc.height}>
-              )
-            }
+  <article class="exercise-details">
+    <!-- <h3>{data.frontmatter.title}</h3> -->
+    <div class="exercise-content">
+      <Content />
 
-            {data.frontmatter.canAddBoxes && (
-                <div class="controls">
-                    <div>
-                      <Button icon="minus">Fjern boks</Button>
-                      <Button icon="plus">Tilføj boks</Button>
-                    </div>
-                </div>
+      {
+        data.frontmatter.hints ? (
+          <details>
+            <summary>
+              Hints{" "}
+              <Icon
+                name="chevron-down"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              />
+            </summary>
+            {data.frontmatter.hints.some(
+              (hint) => hint.type === "property"
+            ) && (
+              <ul class="hints properties">
+                {data.frontmatter.hints
+                  .filter((hint) => hint.type === "property")
+                  .map((hint) => {
+                    return (
+                      <li data-type={hint.type}>
+                        <code>{hint.name}</code>
+                      </li>
+                    );
+                  })}
+              </ul>
             )}
-        </article>
+            {data.frontmatter.hints.some((hint) => hint.type === "value") && (
+              <ul class="hints values">
+                {data.frontmatter.hints
+                  .filter((hint) => hint.type === "value")
+                  .map((hint) => {
+                    return (
+                      <li data-type={hint.type}>
+                        <code>{hint.name}</code>
+                      </li>
+                    );
+                  })}
+              </ul>
+            )}
+          </details>
+        ) : (
+          <div data-no-hints>Ingen hints</div>
+        )
+      }
+    </div>
+    {
+      data.frontmatter.targetSrc.type === "video" ? (
+        <video muted loop autoplay playsinline preload="metadata">
+          <source src={data.frontmatter.targetSrc.path} type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          loading={num === 1 ? "eager" : "lazy"}
+          fetchpriority={num === 1 ? "high" : "low"}
+          src={data.frontmatter.targetSrc.path}
+          alt=""
+          width={data.frontmatter.targetSrc.width}
+          height={data.frontmatter.targetSrc.height}
+        />
+      )
+    }
 
-        
-
-        <div class="editor">
-          <label for={data.frontmatter.id}><span>CSS</span></label>
-          <div class="reset-buttons">
-            <button class="reset">
-              <span class="visually-hidden">Nulstil</span>
-              <!--<svg aria-hidden="true" width="16" height="16">
-                <use href="#reset-icon"/>
-              </svg>-->
-              <Icon name="subway:refresh-time" width="16" height="16" />
-            </button>
-            <div class="button-group-confirm">
-              <button data-accept="true" data-message="Accepter">
-              <span class="visually-hidden">Accepter nulstilling</span>
-                <!--<svg aria-hidden="true" width="18" height="18">
-                  <use href="#accept"/>
-                </svg>-->
-                <Icon name="lucide:check" width="18" height="18" />
-              </button>
-              <button data-accept="false" data-message="Afvis">
-              <span class="visually-hidden">Afvis nulstilling</span>
-                <!--<svg aria-hidden="true" width="18" height="18">
-                  <use href="#reject"/>
-                </svg>-->
-                <Icon name="lucide:x" width="18" height="18" />
-              </button>
-            </div>
-        </div>
-          <textarea id={data.frontmatter.id} autocorrect="off" autocomplete="off" spellcheck="false" autocapitalize="off" class="prism-live language-css line-numbers">{data.frontmatter.startingCSS.trim()}</textarea>
-
-        <div class="editor-actions">
-          {data.frontmatter.help?.link && data.frontmatter.help?.topic ? (<small>Har du brug for hjælp? <a href={data.frontmatter.help.link} target="_blank" rel="noopener">
-            <span>Lær mere om {data.frontmatter.help?.topic}</span> 
-            <!-- <svg width="16" height="16" aria-label="åbner i nyt vindue.">
-            <use href="#external-link"></use>
-            </svg>-->
-            <Icon name="lucide:external-link" width="14" height="14" aria-label="åbner i nyt vindue." />
-          </a>
-        </small>) : null}
-          
-          <Popup boxes={boxes} />
-        </div>
-
-          <style is:inline class="style"></style>
-          
-        </div>
-
-        <div class="output">
-          <div class="container">
-              {boxes.map((_,index)=><div class={`box box-${index+1}`}>.box-{index+1}</div>)}
+    {
+      data.frontmatter.canAddBoxes && (
+        <div class="controls">
+          <div>
+            <Button icon="minus">Fjern boks</Button>
+            <Button icon="plus">Tilføj boks</Button>
           </div>
         </div>
+      )
+    }
+  </article>
 
-      </section>
+  <div class="editor">
+    <label for={data.frontmatter.id}><span>CSS</span></label>
+    <div class="reset-buttons">
+      <button class="reset">
+        <span class="visually-hidden">Nulstil</span>
+        <Icon name="subway:refresh-time" width="16" height="16" />
+      </button>
+      <div class="button-group-confirm">
+        <button data-accept="true" data-message="Accepter">
+          <span class="visually-hidden">Accepter nulstilling</span>
+          <Icon name="check" width="18" height="18" />
+        </button>
+        <button data-accept="false" data-message="Afvis">
+          <span class="visually-hidden">Afvis nulstilling</span>
+          <Icon name="x" width="18" height="18" />
+        </button>
+      </div>
+    </div>
+    <textarea
+      id={data.frontmatter.id}
+      autocorrect="off"
+      autocomplete="off"
+      spellcheck="false"
+      autocapitalize="off"
+      class="prism-live language-css line-numbers"
+      >{data.frontmatter.startingCSS.trim()}</textarea
+    >
 
+    <div class="editor-actions">
+      {
+        data.frontmatter.help?.link && data.frontmatter.help?.topic ? (
+          <small>
+            Har du brug for hjælp?{" "}
+            <a href={data.frontmatter.help.link} target="_blank" rel="noopener">
+              <span>Lær mere om {data.frontmatter.help?.topic}</span>
+              <Icon
+                name="external-link"
+                width="14"
+                height="14"
+                aria-label="åbner i nyt vindue."
+              />
+            </a>
+          </small>
+        ) : null
+      }
 
-      <style lang="scss">
-        article h3 {
-          grid-column: 1 / -1;
+      <Popup boxes={boxes} />
+    </div>
+
+    <style is:inline class="style"></style>
+  </div>
+
+  <div class="output">
+    <div class="container">
+      {
+        boxes.map((_, index) => (
+          <div class={`box box-${index + 1}`}>.box-{index + 1}</div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  article h3 {
+    grid-column: 1 / -1;
+  }
+  small {
+    font-size: 0.8rem;
+    font-weight: 500;
+    // // grid-column: 2 / -2;
+    // padding: var(--space-4) 0;
+    // margin-inline: var(--space-5);
+    // inline-size: fit-content;
+    color: hsl(209, 23%, 74%);
+    position: relative;
+    display: flex;
+    gap: 0.5ch;
+    flex-wrap: wrap;
+    margin-inline-start: var(--space-2);
+
+    a:any-link {
+      text-decoration: none;
+      color: var(--blue-500);
+      // display: inline-flex;
+      // border-radius: var(--bdrs-sm);
+      gap: var(--space-1);
+      align-items: center;
+
+      span {
+        text-decoration: underline;
+      }
+
+      svg {
+        inline-size: 1em;
+        block-size: 1em;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: #fff;
+
+        span {
+          text-decoration: underline var(--blue-500);
         }
-        small {
-          font-size: .8rem;
-          font-weight: 500;
-          // // grid-column: 2 / -2;
-          // padding: var(--space-4) 0;
-          // margin-inline: var(--space-5);
-          // inline-size: fit-content;
-          color: hsl(209, 23%, 74%);
-          position: relative;
-          display: flex;
-          gap: 0.5ch;
-          flex-wrap: wrap;
-          margin-inline-start: var(--space-2);
-        
-          a:any-link {
-            text-decoration: none;
-            color: var(--blue-500);
-            // display: inline-flex;
-            // border-radius: var(--bdrs-sm);
-            gap: var(--space-1);
-            align-items: center;
+      }
+    }
+  }
+  .reset-buttons {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: var(--space-2);
+    z-index: 1;
+    display: grid;
+    gap: 0 0.4ch;
+    place-items: end;
+    margin-inline-end: var(--space-2);
+  }
 
-            span {
-                text-decoration: underline;
-            }
+  .reset-buttons > * {
+    grid-area: 1 / 1;
+  }
 
-            svg {
-              inline-size: 1em;
-              block-size: 1em;
-            }
+  .button-group-confirm {
+    display: flex;
+    gap: 0.5ch;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s opacity;
+  }
 
-            &:hover,
-            &:focus-visible {
-              color: #fff;
-              
-              span {
-                text-decoration: underline var(--blue-500);
-              }
-            }
-          }
-        }
-        .reset-buttons {
-          position: absolute;
-          inset-inline-end: 0;
-          inset-block-start: var(--space-2);
-          z-index: 1;
-          display: grid;
-          gap: 0 .4ch;
-          place-items: end;
-          margin-inline-end: var(--space-2);
-        }
+  .reset-buttons.active .button-group-confirm {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-        .reset-buttons > * {
-          grid-area: 1 / 1;
-        }
+  .reset-buttons.active > button {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-        .button-group-confirm {
-          display: flex;
-          gap: .5ch;
-          pointer-events: none;
-          opacity: 0;
-          transition: .3s opacity;
-        }
+  button[data-accept] {
+    --btn-stroke: 0;
+    // --btn-theme: #fb28a8;
+    // --btn-theme: #ffa956;
+    --btn-theme: var(--blue-500);
+    position: relative;
+    color: #fff;
+    padding: 0;
+    inline-size: 28px;
+    block-size: 28px;
+    background: transparent;
+    display: grid;
+    place-content: center;
+    border-radius: var(--bdrs-round);
+  }
 
-        .reset-buttons.active .button-group-confirm {
-          opacity: 1;
-          pointer-events: auto;
-        }
+  :global(button svg path) {
+    stroke-width: 3;
+  }
 
-        .reset-buttons.active > button {
-          opacity: 0;
-          pointer-events: none;
-        }
+  button:focus-visible {
+    --btn-stroke: 2px;
+  }
 
-        button[data-accept] {
-          --btn-stroke: 0;
-          // --btn-theme: #fb28a8;
-          // --btn-theme: #ffa956;
-          --btn-theme: var(--blue-500);
-          position: relative;
-          color: #fff;
-          padding: 0;
-          inline-size: 28px;
-          block-size: 28px;
-          background: transparent;
-          display: grid;
-          place-content: center;
-          border-radius: var(--bdrs-round);
-        }
+  @media (hover: hover) {
+    button:hover {
+      --btn-stroke: 2px;
+    }
+  }
+</style>
 
-        :global(button svg path) {
-          stroke-width: 3;
-        }
-
-        button:focus-visible {
-            --btn-stroke: 2px;
-          }
-
-        @media (hover: hover) {
-          button:hover {
-            --btn-stroke: 2px;
-          }
-        }
-      </style>
+<script>
+  import "../js/intersecting";
+</script>

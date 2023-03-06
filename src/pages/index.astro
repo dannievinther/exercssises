@@ -1,5 +1,5 @@
 ---
-// src/layouts/Base.astro
+import "/src/style/global.scss";
 import Head from "../components/Head.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -35,173 +35,174 @@ import Footer from "../components/Footer.astro";
 
       <Footer />
     </div>
-  </body><style lang="scss">
-    h1 {
-      font-family: "Mona Sans", system-ui;
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 4rem;
-      --min-font: 40;
-      --max-font: 64;
-      font-size: clamp(
-        var(--min-font) * 1px,
-        var(--responsive),
-        var(--max-font) * 1px
-      );
-      line-height: 1.125;
-      cursor: pointer;
-      justify-self: center;
-      -webkit-user-select: none;
-      user-select: none;
-      // background: #2a2139;
-      // background: #141330;
-      background: var(--blue-900);
-      will-change: transform;
-      padding-inline: var(--space-5);
-      border-radius: 8px;
-      transform-origin: 0 0;
-      // transition: 0.1s cubic-bezier(0.5, 0, 0.5, 1);
-      pointer-events: auto;
-      position: relative;
-      color: #fff;
-    }
+    <style lang="scss">
+      h1 {
+        font-family: "Mona Sans", system-ui;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 4rem;
+        --min-font: 40;
+        --max-font: 64;
+        font-size: clamp(
+          var(--min-font) * 1px,
+          var(--responsive),
+          var(--max-font) * 1px
+        );
+        line-height: 1.125;
+        cursor: pointer;
+        justify-self: center;
+        -webkit-user-select: none;
+        user-select: none;
+        // background: #2a2139;
+        // background: #141330;
+        background: var(--blue-900);
+        will-change: transform;
+        padding-inline: var(--space-5);
+        border-radius: 8px;
+        transform-origin: 0 0;
+        // transition: 0.1s cubic-bezier(0.5, 0, 0.5, 1);
+        pointer-events: auto;
+        position: relative;
+        color: #fff;
+      }
 
-    .stroke-text {
-      // --c: #72f1b8;
-      // color: var(--c, #72f1b8);
-      // --c: var(--primary);
-      // color: var(--c, #82f4e1);
-      color: var(--c, var(--blue-500));
-      -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 2px currentColor;
-      overflow: hidden;
-      // max-width: 3.1ch;
-      max-width: 3.41ch;
-      display: inline-block;
-      vertical-align: bottom;
-      text-decoration: underline var(--c) 4px;
-      text-underline-offset: 4px;
-      transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1);
-      transition-property: max-width, color;
-      will-change: max-width;
-      contain: paint;
-    }
+      .stroke-text {
+        // --c: #72f1b8;
+        // color: var(--c, #72f1b8);
+        // --c: var(--primary);
+        // color: var(--c, #82f4e1);
+        color: var(--c, var(--blue-500));
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 2px currentColor;
+        overflow: hidden;
+        // max-width: 3.1ch;
+        max-width: 3.41ch;
+        display: inline-block;
+        vertical-align: bottom;
+        text-decoration: underline var(--c) 4px;
+        text-underline-offset: 4px;
+        transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+        transition-property: max-width, color;
+        will-change: max-width;
+        contain: paint;
+      }
 
-    .toggled {
-      // --c: var(--ui-secondary);
-      --c: #fff;
-      // max-width: 1.05ch;
-      max-width: 1.225ch;
-    }
+      .toggled {
+        // --c: var(--ui-secondary);
+        --c: #fff;
+        // max-width: 1.05ch;
+        max-width: 1.225ch;
+      }
 
-    .front {
-      display: grid;
-      place-items: center;
-      grid-template-rows: 1fr auto;
-      min-height: 100vh;
-      min-height: 100dvh;
-      overflow: hidden;
-    }
+      .front {
+        display: grid;
+        place-items: center;
+        grid-template-rows: 1fr auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: hidden;
+      }
 
-    svg,
-    main {
-      grid-area: 1 / 1;
-    }
-    svg:not(main > *) {
-      max-inline-size: 30rem;
-      padding: 2rem;
-      transform: translateX(calc(-30px * var(--x)))
-        translateY(calc(-30px * var(--y)));
-      transition: transform 0.1s;
-    }
+      svg,
+      main {
+        grid-area: 1 / 1;
+      }
+      svg:not(main > *) {
+        max-inline-size: 30rem;
+        padding: 2rem;
+        transform: translateX(calc(-30px * var(--x)))
+          translateY(calc(-30px * var(--y)));
+        transition: transform 0.1s;
+      }
 
-    main {
-      display: grid;
-      grid: initial;
-      gap: 2rem;
-      transform: translateX(calc(-10px * var(--x)))
-        translateY(calc(-10px * var(--y)));
-      transition: transform 0.1s;
-    }
+      main {
+        display: grid;
+        grid: initial;
+        gap: 2rem;
+        transform: translateX(calc(-10px * var(--x)))
+          translateY(calc(-10px * var(--y)));
+        transition: transform 0.1s;
+      }
 
-    a:any-link {
-      color: #72f1b8;
-      text-decoration: none;
-      /* touch-action: manipulation; */
-      color: var(--blue-500);
-      font-weight: 400;
-      font-family: "Wotfard";
-      font-size: 1.2rem;
-      // text-transform: uppercase;
-      // letter-spacing: 1.5px;
-      /* font-family: "sql wd"; */
-      // font-family: system-ui;
-      // font-variation-settings: "wdth" 140, "wght" 620;
-    }
+      a:any-link {
+        color: #72f1b8;
+        text-decoration: none;
+        /* touch-action: manipulation; */
+        color: var(--blue-500);
+        font-weight: 400;
+        font-family: "Mona Sans", system-ui;
+        font-size: 1.2rem;
+        // text-transform: uppercase;
+        // letter-spacing: 1.5px;
+        /* font-family: "sql wd"; */
+        // font-family: system-ui;
+        // font-variation-settings: "wdth" 140, "wght" 620;
+      }
 
-    a:hover {
-      text-decoration: underline 0.1em;
-      text-decoration-color: #fff;
-      text-underline-offset: 0.1em;
-    }
+      a:hover {
+        text-decoration: underline 0.1em;
+        text-decoration-color: #fff;
+        text-underline-offset: 0.1em;
+      }
 
-    p {
-      color: #fff;
-      text-align: center;
-      transform: translateX(calc(-10px * var(--x)))
-        translateY(calc(-5px * var(--y)));
-      transition: transform 0.1s;
-    }
-    .logo {
-      inline-size: clamp(300px, 50vw, 600px);
-    }
-    .inline-list {
-      display: inline-block; /* 1 */
-      padding: 0; /* 2 */
-      line-height: 2em;
-      text-align: center;
-    }
+      p {
+        color: #fff;
+        text-align: center;
+        transform: translateX(calc(-10px * var(--x)))
+          translateY(calc(-5px * var(--y)));
+        transition: transform 0.1s;
+      }
+      .logo {
+        inline-size: clamp(300px, 50vw, 600px);
+      }
+      .inline-list {
+        display: inline-block; /* 1 */
+        padding: 0; /* 2 */
+        line-height: 2em;
+        text-align: center;
+      }
 
-    .inline-list > li {
-      display: inline; /* 3 */
-    }
+      .inline-list > li {
+        display: inline; /* 3 */
+      }
 
-    .inline-list > li::after {
-      content: " "; /* 4 */
-      letter-spacing: 1em; /* 5 */
-      background: linear-gradient(
-        90deg,
-        transparent calc(50% - 0.03125em),
-        #fff 0,
-        #fff calc(50% + 0.03125em),
-        transparent 0
-      ); /* 6 */
-    }
-  </style>
+      .inline-list > li::after {
+        content: " "; /* 4 */
+        letter-spacing: 1em; /* 5 */
+        background: linear-gradient(
+          90deg,
+          transparent calc(50% - 0.03125em),
+          #fff 0,
+          #fff calc(50% + 0.03125em),
+          transparent 0
+        ); /* 6 */
+      }
+    </style>
 
-  <script>
-    const heading = document.querySelector("h1");
-    heading.addEventListener("click", () => {
-      const span = heading.querySelector("span");
-      span.classList.toggle("toggled");
-    });
-  </script>
+    <script>
+      const heading = document.querySelector("h1");
+      heading.addEventListener("click", () => {
+        const span = heading.querySelector("span");
+        span.classList.toggle("toggled");
+      });
+    </script>
 
-  <script is:inline>
-    const root = document.documentElement;
+    <script is:inline>
+      const root = document.documentElement;
 
-    let raf, x, y;
+      let raf, x, y;
 
-    document.addEventListener("pointermove", (e) => {
-      x = (e.x / window.innerWidth - 0.5) * 2;
-      y = (e.y / window.innerWidth - 0.5) * 2;
-      raf = raf || requestAnimationFrame(update);
-    });
+      document.addEventListener("pointermove", (e) => {
+        x = (e.x / window.innerWidth - 0.5) * 2;
+        y = (e.y / window.innerWidth - 0.5) * 2;
+        raf = raf || requestAnimationFrame(update);
+      });
 
-    function update() {
-      root.style.setProperty("--x", x);
-      root.style.setProperty("--y", y);
-      raf = null;
-    }
-  </script>
+      function update() {
+        root.style.setProperty("--x", x);
+        root.style.setProperty("--y", y);
+        raf = null;
+      }
+    </script>
+  </body>
 </html>

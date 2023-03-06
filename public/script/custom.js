@@ -10,60 +10,11 @@
   // }
   // observeHeader();
 
-  // const copyMe = document.querySelectorAll("h2 a[href]");
-
-  // copyMe.forEach((c) => {
-  //   c.addEventListener("click", ({ target }) => {
-  //     const url = window.location.href.split("#")[0];
-  //     if (target.tagName === "A")
-  //       navigator.clipboard.writeText(`${url}${c.hash}`);
-  //   });
-  // });
-
   const sections = document.querySelectorAll("section");
-  // const outputs = document.querySelectorAll(".output");
   // const classReg = /[^,/*{}\s]+(?![^{]*})/g;
   const classReg = /(?!\s)[^,()/*{}]+(?![^{]*})/g;
 
-  // outputs.forEach((output) => {
-  //   output.addEventListener("click", ({ target }) => {
-  //     target.contentEditable = true;
-  //     target.focus();
-  //     target.addEventListener(
-  //       "mouseout",
-  //       ({ target }) => {
-  //         target.contentEditable = false;
-  //       },
-  //       { once: true }
-  //     );
-  //   });
-  // });
-
-  const options = {
-    threshold: [0.1, 0.5, 0.9],
-    // rootMargin: "-250px 0px -250px 0px",
-    rootMargin: `${-window.innerHeight / 3}px 0px ${
-      -window.innerHeight / 3
-    }px 0px`,
-  };
-
-  function callback(entries, observer) {
-    entries.forEach((entry, i) => {
-      const { target, intersectionRatio, boundingClientRect, isIntersecting } =
-        entry;
-      if (isIntersecting) {
-        // document.documentElement.dataset.section = target.dataset.exerciseKey;
-        target.classList.add("in-view");
-      } else {
-        target.classList.remove("in-view");
-      }
-    });
-  }
-
-  const observer = new IntersectionObserver(callback, options);
-
   sections.forEach((section) => {
-    observer.observe(section);
     const styleTag = section.querySelector(".editor > style");
     const _tA = section.querySelector(".editor > textarea");
     const exerciseKey = section.dataset.exerciseKey;
@@ -81,20 +32,6 @@
     const resetBtns = section.querySelector(".reset-buttons");
     const plus = section.querySelector(".plus");
     const minus = section.querySelector(".minus");
-
-    // const popup = section.querySelector(".popup");
-    // const popupSum = popup.querySelector("summary");
-
-    // popup.addEventListener("click", dismiss, { once: true });
-
-    // function dismiss() {
-    //   document.addEventListener("click", ({ target }) => {
-    //     if (target !== popupSum) {
-    //       popup.open = false;
-    //       return;
-    //     }
-    //   });
-    // }
 
     reset.addEventListener("click", (e) => {
       if (_tA.value === "") {
@@ -183,8 +120,7 @@
       const box = document.createElement("div");
       box.className = `box box-${count + 1}`;
       box.textContent = `.box-${count + 1}`;
-      // box.setAttribute("contenteditable", true);
-      parent.appendChild(box);
+      parent.append(box);
     }
 
     function addClasses() {
@@ -208,12 +144,6 @@
     addClasses();
 
     const init = () => {
-      // const parentClass =
-      //   "exercise-" + section.querySelector("article>div").className;
-      // const parentDataset = `${i + 1}`;
-
-      // section.dataset.exerciseKey = `${i + 1}`;
-
       styleTag.innerHTML = prefix(_tA.value);
 
       if (localStorage.getItem(exerciseKey)) {

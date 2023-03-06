@@ -1,11 +1,31 @@
 ---
-import BaseLayout from '../layouts/Flex.astro'
+import BaseLayout from "../layouts/Base.astro";
 import Exercise from "../components/Exercise.astro";
-const localData = await Astro.glob('../exercises/flex/*.md');
+const localData = await Astro.glob("../exercises/flex/*.md");
 ---
+
 <!DOCTYPE html>
-<BaseLayout title="Flex exercises">
-    {localData.map((ex, i) => (
-        <Exercise dataSuffix="flex" data={ex} num={i+1} all={localData.length} />
-    ))}
+<BaseLayout title="Flex-exercises">
+  {
+    localData.map((ex, i) => (
+      <Exercise
+        dataSuffix="flex"
+        data={ex}
+        num={i + 1}
+        all={localData.length}
+      />
+    ))
+  }
 </BaseLayout>
+
+<style is:global>
+  .output .box {
+    --ui-primary: var(--violet-100);
+  }
+  section img {
+    background: var(--violet-100);
+  }
+  .output:is(.editor:focus-within + *) .box {
+    background: hsl(290deg 68% 87%) !important;
+  }
+</style>
