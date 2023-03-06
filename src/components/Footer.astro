@@ -15,7 +15,7 @@ import chevronright from "../icons/chevron-right.svg?raw";
     >Prøv også {label} <Fragment set:html={chevronright} /></a
   >
 
-  <small><span class="dbclick">© {year}&nbsp;Vinther.codes</span></small>
+  <small><span>© {year}&nbsp;Vinther.codes</span></small>
 </footer>
 
 <style lang="scss">
@@ -38,7 +38,7 @@ import chevronright from "../icons/chevron-right.svg?raw";
     border-radius: var(--bdrs-round);
     transition: 0.2s;
 
-    svg {
+    :global(svg) {
       color: #a9bcce;
       display: inline-block;
       vertical-align: middle;
@@ -49,7 +49,7 @@ import chevronright from "../icons/chevron-right.svg?raw";
       border-color: #a9bcce;
       color: var(--blue-500);
 
-      svg {
+      :global(svg) {
         color: var(--blue-500);
       }
     }
@@ -57,14 +57,17 @@ import chevronright from "../icons/chevron-right.svg?raw";
 
   div {
     text-align: center;
-    padding: var(--space-7) var(--space-5) 0;
+    margin: var(--space-7) var(--space-5) 0;
   }
   .load-more {
+    color: var(--blue-900);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.25em 0.75em;
     cursor: pointer;
-    padding: var(--space-1) var(--space-3);
-    font-weight: 500;
-    font-family: "Mona Sans", "Wotfard", Segoe UI, system-ui, -apple-system,
-      sans-serif;
+    font-variation-settings: "wdth" 120;
+    font-family: Mona Sans, system-ui;
+    letter-spacing: 0.01em;
   }
   .load-more:is(:hover, :focus-visible) {
     text-decoration: underline;
