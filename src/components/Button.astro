@@ -23,6 +23,19 @@ import pluscircle from "../icons/plus-circle.svg?raw";
 </button>
 
 <style lang="scss">
+  button:not([disabled]) {
+    background: linear-gradient(#fff 0%, #e9eef4 100%) padding-box, #fff;
+    box-shadow: rgb(255 255 255) 0px 0px 0px 0px,
+      rgb(51 65 85 / 10%) 0px 0px 0px 1px, rgb(0 0 0 / 5%) 0px 20px 25px -5px,
+      rgb(0 0 0 / 5%) 0px 8px 10px -6px;
+    transition: 0s;
+  }
+  button:not([disabled]):active {
+    background: linear-gradient(#fff 0%, #fff 100%) padding-box, #fff;
+    box-shadow: rgb(255 255 255) 0px 0px 0px 0px,
+      rgb(51 65 85 / 10%) 0px 0px 0px 1px, rgb(0 0 0 / 5%) 0px 0px 0px 0px,
+      rgb(0 0 0 / 5%) 0px 0px 0px 0px;
+  }
   button :global(svg) {
     color: var(--btn-icon, var(--ui-secondary));
     // width: 1.375rem;
@@ -34,13 +47,13 @@ import pluscircle from "../icons/plus-circle.svg?raw";
     // --btn-icon: var(--ui-accent);
     // --btn-icon: var(--ui-secondary);
     // --btn-theme: var(--ui-accent);
-    box-shadow: none;
+    // box-shadow: none;
   }
   button.minus {
     // --btn-icon: hsl(324 66% 37%);
     // --btn-theme: hsl(324 66% 37%);
     // --btn-bg: hsl(324 60% 85%);
     // --btn-active: hsl(324 60% 80%);
-    box-shadow: none;
+    // box-shadow: none;
   }
 </style>

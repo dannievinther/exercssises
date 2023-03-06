@@ -301,8 +301,15 @@ section {
   transition: filter 0.2s;
 
   margin-inline-start: var(--space-6);
-  box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
+  // box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
   margin-block-end: var(--space-6);
+
+  box-shadow: rgb(255 255 255) 0px 0px 0px 0px,
+    rgb(51 65 85 / 10%) 0px 0px 0px 1px, rgb(0 0 0 / 5%) 0px 20px 25px -5px,
+    rgb(0 0 0 / 5%) 0px 8px 10px -6px;
+  background: linear-gradient(hsl(210deg 73% 100%) 0%, #f3f4f6 100%) padding-box,
+    #fff;
+  border: 1px solid transparent;
 
   & > * {
     filter: var(--filter, grayscale(0.8));
