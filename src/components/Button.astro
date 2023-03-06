@@ -1,6 +1,9 @@
 ---
-import { Icon } from "astro-icon";
+// import { Icon } from "astro-icon";
 const { icon } = Astro.props;
+
+import minuscircle from "../icons/minus-circle.svg?raw";
+import pluscircle from "../icons/plus-circle.svg?raw";
 ---
 
 <button type="button" class={icon}>
@@ -9,9 +12,11 @@ const { icon } = Astro.props;
     </svg> -->
   {
     icon === "minus" ? (
-      <Icon name="minus-circle" width="18" fill="none" />
+      // <Icon name="minus-circle" width="18" fill="none" />
+      <Fragment set:html={minuscircle} />
     ) : (
-      <Icon name="plus-circle" width="18" fill="none" />
+      // <Icon name="plus-circle" width="18" fill="none" />
+      <Fragment set:html={pluscircle} />
     )
   }
   <span><slot /></span>

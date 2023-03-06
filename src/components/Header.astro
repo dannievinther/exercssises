@@ -1,10 +1,13 @@
 ---
 import { Icon } from "astro-icon";
+import chevronleft from "../icons/chevron-left.svg?raw";
 ---
 
 <header class="main-header">
-  <a class="back" href="/"
-    ><Icon name="chevron-left" width="18" />&nbsp;Til exercssises</a
+  <a class="back" href="/">
+    <!--<Icon name="chevron-left" width="18" />-->
+    <Fragment set:html={chevronleft} />
+    &nbsp;Til exercssises</a
   >
 
   <!-- <div class="exercise-logo">

@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon";
 const { label = "", linkTo = "/" } = Astro.props;
 const year = new Date().getFullYear();
+
+import chevronright from "../icons/chevron-right.svg?raw";
 ---
 
 <div>
@@ -9,7 +11,9 @@ const year = new Date().getFullYear();
 </div>
 
 <footer>
-  <a href={linkTo} class="more-exercises">Prøv også {label}</a>
+  <a href={linkTo} class="more-exercises"
+    >Prøv også {label} <Fragment set:html={chevronright} /></a
+  >
 
   <small><span class="dbclick">© {year}&nbsp;Vinther.codes</span></small>
 </footer>
