@@ -262,6 +262,8 @@ main {
 
   --filter: grayscale(0);
 
+  --before-opacity: 1;
+
   .small-label {
     --font-stretch: 100;
     // transform: scale(1.1);
@@ -314,12 +316,8 @@ section {
     border-radius: inherit;
     z-index: -1;
     filter: blur(40px);
-    opacity: 0;
+    opacity: var(--before-opacity, 0);
     transition: opacity 0.3s;
-  }
-
-  &.in-view::before {
-    opacity: 1;
   }
 
   // &::before,
