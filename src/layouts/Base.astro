@@ -49,24 +49,37 @@ const link = title === "Grid-exercises" ? "/flex" : "/grid";
     <script>
       import "../js/exercises";
     </script>
-  </body><style>
-    body {
-      --grid: 60;
-      --bg: hsl(209deg 15% 93%);
-      --pct: 20%;
-      --lines: hsl(209deg 27% 84%); /*var(--blue-muted-comment)*/
-      background: linear-gradient(
-            to bottom,
-            var(--bg),
-            65%,
-            rgba(255, 255, 255, 0)
-          )
-          0 0 / 100% 30vh no-repeat,
-        linear-gradient(90deg, var(--bg), var(--pct), #fff0),
-        linear-gradient(-90deg, var(--bg), var(--pct), #fff0),
-        conic-gradient(from 90deg at 1px 1px, #0000 90deg, var(--lines) 0) 50% 0 /
-          calc((1200px - 2rem) / var(--grid)) calc(1200px / var(--grid)),
-        var(--bg);
-    }
-  </style>
+    <style lang="scss">
+      body {
+        position: relative;
+        --grid: 60;
+        --bg: hsl(209deg 15% 93%);
+        --pct: 20%;
+        --lines: hsl(209deg 27% 84%); /*var(--blue-muted-comment)*/
+        background: linear-gradient(
+              to bottom,
+              var(--bg),
+              65%,
+              rgba(255, 255, 255, 0)
+            )
+            0 0 / 100% 30vh no-repeat,
+          linear-gradient(90deg, var(--bg), var(--pct), #fff0),
+          linear-gradient(-90deg, var(--bg), var(--pct), #fff0),
+          conic-gradient(from 90deg at 1px 1px, #0000 90deg, var(--lines) 0) 50%
+            0 / calc((1200px - 2rem) / var(--grid)) calc(1200px / var(--grid)),
+          var(--bg);
+
+        &::before {
+          z-index: -1;
+          pointer-events: none;
+          position: absolute;
+          inset: 0;
+          opacity: 0.2;
+          content: "";
+          background-image: url("/assets/svg/noise.svg");
+          background-size: 500px;
+        }
+      }
+    </style>
+  </body>
 </html>
