@@ -302,45 +302,61 @@ section {
   border: 1px solid transparent;
 
   & > * {
-    filter: var(--filter, grayscale(0.8));
-    transition: filter 0.2s;
-  }
-
-  &::before,
-  &::after {
-    content: none;
-    position: absolute;
-    z-index: -1;
-    width: calc(100% - 1rem);
-    display: block;
-    top: 0;
-    left: 0;
-    border-radius: calc(var(--bdrs-md) * 2);
-    opacity: var(--pseudo-opacity, 0.2);
-    filter: blur(25px);
-    transition: 0.3s opacity;
-    // mix-blend-mode: color-dodge;
-    --purple-200: #5000ca;
+    // filter: var(--filter, grayscale(0.8));
+    // transition: filter 0.2s;
   }
 
   &::before {
-    background: var(--purple-200);
-    margin: -0.5rem 0.5rem;
-    height: calc(100% + 1rem);
-    transform: skewY(1deg);
+    content: "";
+    position: absolute;
+    inset: 5% 5%;
+    background: hsl(260deg 71% 51% / 50%);
+    border-radius: inherit;
+    z-index: -1;
+    filter: blur(40px);
+    opacity: 0;
+    transition: opacity 0.3s;
   }
-  &::after {
-    background: var(--pink-400);
-    margin: -0.25rem 0.5rem;
-    height: calc(100% + 0.25rem);
-    transform: skewY(-1deg);
+
+  &.in-view::before {
+    opacity: 1;
   }
-  &:nth-of-type(even)::before {
-    background: var(--pink-400);
-  }
-  &:nth-of-type(even)::after {
-    background: var(--purple-200);
-  }
+
+  // &::before,
+  // &::after {
+  //   content: none;
+  //   position: absolute;
+  //   z-index: -1;
+  //   width: calc(100% - 1rem);
+  //   display: block;
+  //   top: 0;
+  //   left: 0;
+  //   border-radius: calc(var(--bdrs-md) * 2);
+  //   opacity: var(--pseudo-opacity, 0.2);
+  //   filter: blur(25px);
+  //   transition: 0.3s opacity;
+  //   // mix-blend-mode: color-dodge;
+  //   --purple-200: #5000ca;
+  // }
+
+  // &::before {
+  //   background: var(--purple-200);
+  //   margin: -0.5rem 0.5rem;
+  //   height: calc(100% + 1rem);
+  //   transform: skewY(1deg);
+  // }
+  // &::after {
+  //   background: var(--pink-400);
+  //   margin: -0.25rem 0.5rem;
+  //   height: calc(100% + 0.25rem);
+  //   transform: skewY(-1deg);
+  // }
+  // &:nth-of-type(even)::before {
+  //   background: var(--pink-400);
+  // }
+  // &:nth-of-type(even)::after {
+  //   background: var(--purple-200);
+  // }
 }
 
 section:has(:target) {
