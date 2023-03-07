@@ -66,17 +66,29 @@ const notHome = Astro.url.pathname !== "/";
   }
   .load-more {
     color: var(--blue-900);
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.25em 0.75em;
-    cursor: pointer;
+    border-radius: var(--bdrs-l);
+    padding: var(--space-3);
+    inline-size: max-content;
+    text-transform: uppercase;
     font-variation-settings: "wdth" 120;
     font-family: Mona Sans, system-ui;
-    letter-spacing: 0.01em;
-    border-radius: var(--bdrs-l);
-  }
-  .load-more:is(:hover, :focus-visible) {
-    text-decoration: underline;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 0.05em;
+    text-decoration: underline 0.25em var(--blue-500);
+    text-underline-offset: 0.125em;
+    transition: 0.2s;
+
+    &:active {
+      text-decoration-color: var(--blue-muted-comment);
+    }
+
+    &:is(:hover, focus-visible) {
+      text-underline-offset: 0.5rem;
+    }
   }
 
   :global([data-extra="true"]) .load-more {
