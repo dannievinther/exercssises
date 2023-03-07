@@ -146,6 +146,7 @@ html {
   scroll-padding-block-start: var(--space-7);
   touch-action: pan-y;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 body {
