@@ -311,13 +311,15 @@ section {
   &::before {
     content: "";
     position: absolute;
-    inset: 5% 5%;
-    background: hsl(260deg 71% 51% / 50%);
+    inset: 4%;
+    background: url(/assets/svg/noise.svg) 0 0 / 500px auto,
+      rgba(100, 41, 219, 0.7);
     border-radius: inherit;
     z-index: -1;
     filter: blur(40px);
     opacity: var(--before-opacity, 0);
     transition: opacity 0.3s;
+    background-blend-mode: hue;
   }
 
   // &::before,
