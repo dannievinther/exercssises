@@ -264,11 +264,18 @@ main {
   --filter: grayscale(0);
 
   --before-opacity: 0.8;
+  --animation-name: move;
 
   .small-label {
     --font-stretch: 100;
     // transform: scale(1.1);
     // transition: 0.3s transform;
+  }
+}
+
+@keyframes move {
+  to {
+    inset: 3% 2%;
   }
 }
 // .in-view + .in-view {
@@ -319,6 +326,7 @@ section {
     filter: blur(40px);
     opacity: var(--before-opacity, 0);
     transition: opacity 0.3s;
+    animation: var(--animation-name) 10s infinite alternate ease-in-out;
   }
 
   // &::before,
