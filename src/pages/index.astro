@@ -9,32 +9,32 @@ import Footer from "../components/Footer.astro";
     <Head title="Vinther Codes" />
   </head>
   <body>
-    <div class="front">
-      <svg
-        aria-hidden="true"
-        viewBox="20 20 170 170"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          opacity=".05"
-          fill="#81F4E1"
-          d="M31,-43.1C44.1,-33.2,61.2,-29.3,70.5,-18.7C79.7,-8,81.1,9.4,74.2,22.1C67.2,34.8,52,42.7,38.3,53C24.6,63.3,12.3,75.9,-3.3,80.5C-18.9,85,-37.8,81.5,-50.3,70.8C-62.8,60.1,-68.8,42.2,-72.3,25C-75.7,7.9,-76.5,-8.6,-70.6,-21.7C-64.7,-34.8,-52,-44.5,-39.1,-54.4C-26.3,-64.3,-13.1,-74.4,-2.1,-71.6C9,-68.7,18,-52.9,31,-43.1Z"
-          transform="translate(100 100)"></path>
-      </svg>
-      <main>
-        <h1 aria-label="CSS exercises">
-          Exer<span class="stroke-text">CSS</span>ises
-        </h1>
-        <ul class="inline-list">
-          <li><a href="/grid">Grid exercises</a></li>
-          <li>
-            <a href="/flex">Flexbox exercises</a>
-          </li>
-        </ul>
-      </main>
+    <!-- <div class="front"> -->
+    <svg
+      aria-hidden="true"
+      viewBox="20 20 170 170"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        opacity=".05"
+        fill="#81F4E1"
+        d="M31,-43.1C44.1,-33.2,61.2,-29.3,70.5,-18.7C79.7,-8,81.1,9.4,74.2,22.1C67.2,34.8,52,42.7,38.3,53C24.6,63.3,12.3,75.9,-3.3,80.5C-18.9,85,-37.8,81.5,-50.3,70.8C-62.8,60.1,-68.8,42.2,-72.3,25C-75.7,7.9,-76.5,-8.6,-70.6,-21.7C-64.7,-34.8,-52,-44.5,-39.1,-54.4C-26.3,-64.3,-13.1,-74.4,-2.1,-71.6C9,-68.7,18,-52.9,31,-43.1Z"
+        transform="translate(100 100)"></path>
+    </svg>
+    <main>
+      <h1 aria-label="CSS exercises">
+        Exer<span class="stroke-text">CSS</span>ises
+      </h1>
+      <ul class="inline-list">
+        <li><a href="/grid">Grid exercises</a></li>
+        <li>
+          <a href="/flex">Flexbox exercises</a>
+        </li>
+      </ul>
+    </main>
 
-      <Footer />
-    </div>
+    <Footer />
+    <!-- </div> -->
     <style lang="scss">
       h1 {
         font-family: "Mona Sans", system-ui;
@@ -55,7 +55,7 @@ import Footer from "../components/Footer.astro";
         user-select: none;
         // background: #2a2139;
         // background: #141330;
-        background: var(--blue-900);
+        // background: var(--blue-900);
         will-change: transform;
         padding-inline: var(--space-5);
         border-radius: 8px;
@@ -94,13 +94,36 @@ import Footer from "../components/Footer.astro";
         max-width: 1.225ch;
       }
 
-      .front {
+      svg path {
+        fill: currentColor;
+        opacity: 1;
+      }
+
+      body {
         display: grid;
         place-items: center;
         grid-template-rows: 1fr auto;
         min-height: 100vh;
         min-height: 100dvh;
         overflow: hidden;
+        background: var(--blue-900);
+      }
+
+      body::before {
+        --grainy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg">\
+  <filter id="grainy" x="0" y="0" width="100%" height="100%">\
+    <feTurbulence type="fractalNoise" baseFrequency="1.537"></feTurbulence>\
+    <feColorMatrix type="saturate" values="0"></feColorMatrix>\
+    <feBlend in="SourceGraphic" mode="multiply"></feBlend>\
+  </filter>\
+</svg>#grainy');
+        content: "";
+        position: absolute;
+        inset: 0;
+        filter: var(--grainy);
+        z-index: 1;
+        mix-blend-mode: hard-light;
+        pointer-events: none;
       }
 
       svg,
@@ -113,6 +136,10 @@ import Footer from "../components/Footer.astro";
         transform: translateX(calc(-30px * var(--x)))
           translateY(calc(-30px * var(--y)));
         transition: transform 0.1s;
+        color: #6328da;
+        filter: blur(60px);
+        mix-blend-mode: color;
+        opacity: 0.5;
       }
 
       main {
@@ -129,20 +156,21 @@ import Footer from "../components/Footer.astro";
         text-decoration: none;
         /* touch-action: manipulation; */
         color: var(--blue-500);
-        font-weight: 400;
+        font-weight: 500;
         font-family: "Mona Sans", system-ui;
         font-size: 1.2rem;
-        // text-transform: uppercase;
-        // letter-spacing: 1.5px;
-        /* font-family: "sql wd"; */
-        // font-family: system-ui;
-        // font-variation-settings: "wdth" 140, "wght" 620;
+        font-weight: 600;
+        font-variation-settings: "wdth" 100, "wght" 600;
+        font-family: "Mona Sans", system-ui;
+        font-size: 1.2rem;
+        transition: 0.2s font-variation-settings;
       }
 
-      a:hover {
-        text-decoration: underline 0.1em;
+      a:is(:hover, :focus-visible) {
+        text-decoration: underline 0.05em;
         text-decoration-color: #fff;
         text-underline-offset: 0.1em;
+        font-variation-settings: "wdth" 120, "wght" 900;
       }
 
       p {

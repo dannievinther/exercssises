@@ -4,12 +4,17 @@ const { label = "", linkTo = "/" } = Astro.props;
 const year = new Date().getFullYear();
 
 import chevronright from "../icons/chevron-right.svg?raw";
+
+const notHome = Astro.url.pathname !== "/";
 ---
 
-<div>
-  <button class="load-more">Indlæs flere</button>
-</div>
-
+{
+  notHome && (
+    <div>
+      <button class="load-more">Indlæs flere</button>
+    </div>
+  )
+}
 <footer>
   <a href={linkTo} class="more-exercises"
     >Prøv også {label} <Fragment set:html={chevronright} /></a
