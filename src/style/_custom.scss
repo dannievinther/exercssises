@@ -276,7 +276,8 @@ main {
 
 @keyframes move {
   to {
-    inset: 3% 2%;
+    // inset: 3% 2%;
+    scale: 1.04 1.02;
   }
 }
 // .in-view + .in-view {
@@ -328,6 +329,7 @@ section {
     opacity: var(--before-opacity, 0);
     transition: opacity 0.3s;
     animation: var(--animation-name) 10s infinite alternate ease-in-out;
+    will-change: transform;
   }
 
   // &::before,
