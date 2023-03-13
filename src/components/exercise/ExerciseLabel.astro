@@ -2,13 +2,11 @@
 import { Icon } from "astro-icon";
 const { title, num, all } = Astro.props;
 
-import link from "../icons/link.svg?raw";
 ---
 
 <h2 class="small-label" id={`exercise-${num}`}>
   <a href={`#exercise-${num}`}>
-    <!-- <Icon name="link" width="18" height="18" stroke-width="2.5" /> -->
-    <Fragment set:html={link} />
+    <Icon name="link" width="18" height="18" stroke-width="2.5" />
     {title}
   </a>
   <span>{num} / {all}</span>
@@ -150,5 +148,5 @@ import link from "../icons/link.svg?raw";
 </style>
 
 <script>
-  import "../js/copy";
+  import "../../js/copy";
 </script>

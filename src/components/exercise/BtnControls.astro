@@ -1,5 +1,5 @@
 ---
-import Button from "../Button.astro";
+import Button from "./Button.astro";
 ---
 
 <div class="controls">
@@ -8,3 +8,24 @@ import Button from "../Button.astro";
     <Button icon="plus">Tilføj boks</Button>
   </div>
 </div>
+
+<style lang="scss">
+  .controls {
+    display: grid;
+    grid: auto / repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 0 var(--space-6);
+    justify-items: end;
+    align-self: end;
+    grid-column: 1 / -1;
+
+    &::after {
+      content: "";
+    }
+
+    > div {
+      display: flex;
+      gap: var(--space-2);
+      grid-column: -2;
+    }
+  }
+</style>

@@ -13,14 +13,11 @@ const htmlContentAlt = `<div class="container">
   <div class="box box-1">.box-1</div>
   ...
 </div>`;
-
-import file from "../icons/file-code.svg?raw";
 ---
 
 <details class="popup">
   <summary>
-    <!-- <Icon name="file-code" /> -->
-    <Fragment set:html={file} />
+    <Icon name="lucide:file-code" />
     HTML
   </summary>
   <div>
@@ -127,5 +124,5 @@ import file from "../icons/file-code.svg?raw";
 </style>
 
 <script>
-  import "../js/popup.js";
+  import "../../js/popup.js";
 </script>

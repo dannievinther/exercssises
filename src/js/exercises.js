@@ -17,7 +17,7 @@ sections.forEach((section) => {
   const removeBtn = section.querySelector(".minus");
 
   let boxCount = boxContainer.children.length;
-  const maxBoxCount = 10;
+  const maxBoxCount = 12;
   const saveLocally = () => localStorage.setItem(boxKey, boxCount);
 
   const reset = section.querySelector(".reset");
@@ -86,6 +86,7 @@ sections.forEach((section) => {
     setButtonDisabledState(removeBtn, boxCount == 1);
     setButtonDisabledState(addBtn, boxCount >= maxBoxCount);
   }
+
 
   const init = () => {
     if (boxCount > maxBoxCount) {

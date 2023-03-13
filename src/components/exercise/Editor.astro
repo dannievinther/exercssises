@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import Popup from "../Popup.astro";
+import Popup from "./Popup.astro";
 
 const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
 ---
@@ -57,16 +57,9 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
 </div>
 
 <style lang="scss">
-  article h3 {
-    grid-column: 1 / -1;
-  }
   small {
     font-size: 0.8rem;
     font-weight: 500;
-    // // grid-column: 2 / -2;
-    // padding: var(--space-4) 0;
-    // margin-inline: var(--space-5);
-    // inline-size: fit-content;
     color: hsl(209, 23%, 74%);
     position: relative;
     display: flex;
