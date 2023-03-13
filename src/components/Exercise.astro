@@ -5,18 +5,19 @@ import BtnControls from "./exercise/BtnControls.astro";
 import Editor from "./exercise/Editor.astro";
 const { data, num, all } = Astro.props;
 const boxes = [...Array(data.frontmatter.boxes)];
-const { customClass, help, Content } = data;
+const { Content } = data;
+const { title, id, isExtra, hints, customClass, help, startingCSS, canAddBoxes, targetSrc } = data.frontmatter;
 ---
 
 <section
-  data-extra={data.frontmatter.isExtra && "true"}
-  data-exercise-key={data.frontmatter.id}
-  class={data.frontmatter.customClass ?? ""}
+  data-extra={isExtra && "true"}
+  data-exercise-key={id}
+  class={customClass ?? ""}
 >
-  <ExerciseLabel title={data.frontmatter.title} {num} {all} />
+  <ExerciseLabel title={title} {num} {all} />
 
   {
-    data.frontmatter.isExtra && (
+    isExtra && (
       <div class="banner" data-banner-title="Ekstra">
         Ekstra
       </div>
@@ -28,7 +29,7 @@ const { customClass, help, Content } = data;
       <Content />
 
       {
-        data.frontmatter.hints ? (
+        hints ? (
           <details>
             <summary>
               Hints{" "}
@@ -39,11 +40,11 @@ const { customClass, help, Content } = data;
                 aria-hidden="true"
               />
             </summary>
-            {data.frontmatter.hints.some(
+            {hints.some(
               (hint) => hint.type === "property"
             ) && (
               <ul class="hints properties">
-                {data.frontmatter.hints
+                {hints
                   .filter((hint) => hint.type === "property")
                   .map((hint) => {
                     return (
@@ -54,9 +55,9 @@ const { customClass, help, Content } = data;
                   })}
               </ul>
             )}
-            {data.frontmatter.hints.some((hint) => hint.type === "value") && (
+            {hints.some((hint) => hint.type === "value") && (
               <ul class="hints values">
-                {data.frontmatter.hints
+                {hints
                   .filter((hint) => hint.type === "value")
                   .map((hint) => {
                     return (
@@ -74,32 +75,32 @@ const { customClass, help, Content } = data;
       }
     </div>
     {
-      data.frontmatter.targetSrc.type === "video" ? (
+      targetSrc.type === "video" ? (
         <video muted loop autoplay playsinline preload="metadata">
-          <source src={data.frontmatter.targetSrc.path} type="video/mp4" />
+          <source src={targetSrc.path} type="video/mp4" />
         </video>
       ) : (
         <img
           loading={num === 1 ? "eager" : "lazy"}
           fetchpriority={num === 1 ? "high" : "low"}
-          src={data.frontmatter.targetSrc.path}
+          src={targetSrc.path}
           alt=""
-          width={data.frontmatter.targetSrc.width}
-          height={data.frontmatter.targetSrc.height}
+          width={targetSrc.width}
+          height={targetSrc.height}
         />
       )
     }
 
-    {data.frontmatter.canAddBoxes && <BtnControls />}
+    {canAddBoxes && <BtnControls />}
   </article>
 
   <!-- editor -->
   <Editor
-    id={data.frontmatter.id}
-    startingCSS={data.frontmatter.startingCSS.trim()}
+    id={id}
+    startingCSS={startingCSS.trim()}
     {boxes}
-    helpLink={data.frontmatter.help?.link}
-    helpTopic={data.frontmatter.help?.topic}
+    helpLink={help?.link}
+    helpTopic={help?.topic}
   />
 
   <div class="output">
