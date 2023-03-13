@@ -1,8 +1,8 @@
 ---
-import Button from "../components/Button.astro";
 import Popup from "../components/Popup.astro";
 import { Icon } from "astro-icon";
 import ExerciseLabel from "./ExerciseLabel.astro";
+import BtnControls from "./exercise/BtnControls.astro";
 const { data, num, all } = Astro.props;
 const boxes = [...Array(data.frontmatter.boxes)];
 const { customClass, help, Content } = data;
@@ -98,16 +98,7 @@ import external from "../icons/external-link.svg?raw";
       )
     }
 
-    {
-      data.frontmatter.canAddBoxes && (
-        <div class="controls">
-          <div>
-            <Button icon="minus">Fjern boks</Button>
-            <Button icon="plus">Tilføj boks</Button>
-          </div>
-        </div>
-      )
-    }
+    {data.frontmatter.canAddBoxes && <BtnControls />}
   </article>
 
   <div class="editor">
