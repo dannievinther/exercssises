@@ -1,0 +1,166 @@
+---
+import { Icon } from "astro-icon";
+import Popup from "../Popup.astro";
+
+const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
+---
+
+<div class="editor">
+  <label for={id}><span>CSS</span></label>
+  <div class="reset-buttons">
+    <button class="reset">
+      <span class="visually-hidden">Nulstil</span>
+      <Icon name="subway:refresh-time" width="16" height="16" />
+    </button>
+    <div class="button-group-confirm">
+      <button data-accept="true" data-message="Accepter">
+        <span class="visually-hidden">Accepter nulstilling</span>
+        <Icon name="check" width="18" height="18" />
+      </button>
+      <button data-accept="false" data-message="Afvis">
+        <span class="visually-hidden">Afvis nulstilling</span>
+        <Icon name="x" width="18" height="18" />
+      </button>
+    </div>
+  </div>
+  <textarea
+    id={id}
+    autocorrect="off"
+    autocomplete="off"
+    spellcheck="false"
+    autocapitalize="off"
+    class="prism-live language-css line-numbers">{startingCSS}</textarea
+  >
+
+  <div class="editor-actions">
+    {
+      helpLink && helpTopic ? (
+        <small>
+          Har du brug for hjælp?{" "}
+          <a href={helpLink} target="_blank" rel="noopener">
+            <span>Lær mere om {helpTopic}</span>
+            <Icon
+              name="external-link"
+              width="14"
+              height="14"
+              aria-label="åbner i nyt vindue."
+            />
+          </a>
+        </small>
+      ) : null
+    }
+
+    <Popup {boxes} />
+  </div>
+
+  <style is:inline class="style"></style>
+</div>
+
+<style lang="scss">
+  article h3 {
+    grid-column: 1 / -1;
+  }
+  small {
+    font-size: 0.8rem;
+    font-weight: 500;
+    // // grid-column: 2 / -2;
+    // padding: var(--space-4) 0;
+    // margin-inline: var(--space-5);
+    // inline-size: fit-content;
+    color: hsl(209, 23%, 74%);
+    position: relative;
+    display: flex;
+    gap: 0.5ch;
+    flex-wrap: wrap;
+    margin-inline-start: var(--space-2);
+
+    a:any-link {
+      text-decoration: none;
+      color: var(--blue-500);
+      // display: inline-flex;
+      // border-radius: var(--bdrs-sm);
+      gap: var(--space-1);
+      align-items: center;
+
+      span {
+        text-decoration: underline;
+      }
+
+      svg {
+        inline-size: 1em;
+        block-size: 1em;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: #fff;
+
+        span {
+          text-decoration: underline var(--blue-500);
+        }
+      }
+    }
+  }
+  .reset-buttons {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: var(--space-2);
+    z-index: 1;
+    display: grid;
+    gap: 0 0.4ch;
+    place-items: end;
+    margin-inline-end: var(--space-2);
+  }
+
+  .reset-buttons > * {
+    grid-area: 1 / 1;
+  }
+
+  .button-group-confirm {
+    display: flex;
+    gap: 0.5ch;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s opacity;
+  }
+
+  .reset-buttons.active .button-group-confirm {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .reset-buttons.active > button {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  button[data-accept] {
+    --btn-stroke: 0;
+    // --btn-theme: #fb28a8;
+    // --btn-theme: #ffa956;
+    --btn-theme: var(--blue-500);
+    position: relative;
+    color: #fff;
+    padding: 0;
+    inline-size: 28px;
+    block-size: 28px;
+    background: transparent;
+    display: grid;
+    place-content: center;
+    border-radius: var(--bdrs-round);
+  }
+
+  :global(button svg path) {
+    stroke-width: 3;
+  }
+
+  button:focus-visible {
+    --btn-stroke: 2px;
+  }
+
+  @media (hover: hover) {
+    button:hover {
+      --btn-stroke: 2px;
+    }
+  }
+</style>

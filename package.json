@@ -9,10 +9,11 @@
     "preview": "astro preview --host 0.0.0.0"
   },
   "devDependencies": {
-    "astro": "^2.0.17",
+    "astro": "^2.1.2",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "svgo": "^2.8.0"
   },
   "dependencies": {
     "astro-compress": "^1.1.35",
