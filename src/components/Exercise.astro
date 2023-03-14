@@ -3,10 +3,21 @@ import { Icon } from "astro-icon";
 import ExerciseLabel from "./exercise/ExerciseLabel.astro";
 import BtnControls from "./exercise/BtnControls.astro";
 import Editor from "./exercise/Editor.astro";
+import Hints from "./exercise/Hints.astro";
 const { data, num, all } = Astro.props;
 const boxes = [...Array(data.frontmatter.boxes)];
 const { Content } = data;
-const { title, id, isExtra, hints, customClass, help, startingCSS, canAddBoxes, targetSrc } = data.frontmatter;
+const {
+  title,
+  id,
+  isExtra,
+  hints,
+  customClass,
+  help,
+  startingCSS,
+  canAddBoxes,
+  targetSrc,
+} = data.frontmatter;
 ---
 
 <section
@@ -28,51 +39,7 @@ const { title, id, isExtra, hints, customClass, help, startingCSS, canAddBoxes, 
     <div class="exercise-content">
       <Content />
 
-      {
-        hints ? (
-          <details>
-            <summary>
-              Hints{" "}
-              <Icon
-                name="chevron-down"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              />
-            </summary>
-            {hints.some(
-              (hint) => hint.type === "property"
-            ) && (
-              <ul class="hints properties">
-                {hints
-                  .filter((hint) => hint.type === "property")
-                  .map((hint) => {
-                    return (
-                      <li data-type={hint.type}>
-                        <code>{hint.name}</code>
-                      </li>
-                    );
-                  })}
-              </ul>
-            )}
-            {hints.some((hint) => hint.type === "value") && (
-              <ul class="hints values">
-                {hints
-                  .filter((hint) => hint.type === "value")
-                  .map((hint) => {
-                    return (
-                      <li data-type={hint.type}>
-                        <code>{hint.name}</code>
-                      </li>
-                    );
-                  })}
-              </ul>
-            )}
-          </details>
-        ) : (
-          <div data-no-hints>Ingen hints</div>
-        )
-      }
+      {hints ? <Hints {hints} /> : <div data-no-hints>Ingen hints</div>}
     </div>
     {
       targetSrc.type === "video" ? (

@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon";
+const { hints } = Astro.props;
+
+function getHints(hints, type) {
+  return hints
+    .filter((hint) => hint.type === type)
+    .map((prop) => {
+      return {
+        type: prop.type,
+        name: prop.name,
+      };
+    });
+}
+---
+
+<details>
+  <summary>
+    Hints
+    <Icon name="chevron-down" width="16" height="16" aria-hidden="true" />
+  </summary>
+  {
+    hints.some((hint) => hint.type === "property") && (
+      <ul class="hints properties">
+        {getHints(hints, "property").map((hint) => {
+          return (
+            <li data-type={hint.type}>
+              <code>{hint.name}</code>
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+  {
+    hints.some((hint) => hint.type === "value") && (
+      <ul class="hints values">
+        {getHints(hints, "value").map((hint) => {
+          return (
+            <li data-type={hint.type}>
+              <code>{hint.name}</code>
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+</details>
