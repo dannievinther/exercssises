@@ -8,12 +8,7 @@ const localData = await Astro.glob("../exercises/grid/*.md");
 <BaseLayout title="Grid-exercises">
   {
     localData.map((ex, i) => (
-      <Exercise
-        dataSuffix="grid"
-        data={ex}
-        num={i + 1}
-        all={localData.length}
-      />
+      <Exercise data={ex} num={i + 1} all={localData.length} />
     ))
   }
 </BaseLayout>

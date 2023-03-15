@@ -8,12 +8,7 @@ const localData = await Astro.glob("../exercises/flex/*.md");
 <BaseLayout title="Flex-exercises">
   {
     localData.map((ex, i) => (
-      <Exercise
-        dataSuffix="flex"
-        data={ex}
-        num={i + 1}
-        all={localData.length}
-      />
+      <Exercise data={ex} num={i + 1} all={localData.length} />
     ))
   }
 </BaseLayout>

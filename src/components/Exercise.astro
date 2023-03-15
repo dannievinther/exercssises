@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon";
 import ExerciseLabel from "./exercise/ExerciseLabel.astro";
 import BtnControls from "./exercise/BtnControls.astro";
 import Editor from "./exercise/Editor.astro";
@@ -22,7 +21,7 @@ const {
 
 <section
   data-extra={isExtra && "true"}
-  data-exercise-key={id}
+  data-exercise-key={"vc-" + id}
   class={customClass ?? ""}
 >
   <ExerciseLabel title={title} {num} {all} />
@@ -82,16 +81,9 @@ const {
 </section>
 
 <style lang="scss">
-  article h3 {
-    grid-column: 1 / -1;
-  }
   small {
     font-size: 0.8rem;
     font-weight: 500;
-    // // grid-column: 2 / -2;
-    // padding: var(--space-4) 0;
-    // margin-inline: var(--space-5);
-    // inline-size: fit-content;
     color: hsl(209, 23%, 74%);
     position: relative;
     display: flex;

@@ -412,103 +412,6 @@ section .exercise-details img {
   margin-block-start: var(--space-5);
 }
 
-section .hints {
-  // display: grid;
-  // gap: 0.5ex;
-
-  display: flex;
-  flex-wrap: wrap;
-
-  padding: var(--space-1) var(--space-4);
-  margin-block-start: var(--space-2);
-  border-radius: var(--bdrs-md);
-  // border: 2px solid hsl(153 30% 80%);
-  // padding-inline-start: var(--space-4);
-  // display: inline-grid;
-  font-family: "Wotfard";
-  font-weight: 300;
-
-  overflow: hidden;
-  padding: 2.5px;
-
-  padding: calc(var(--space-3) + 3px) calc(var(--space-3) + 5px);
-  background: #e9eef4;
-  border-radius: var(--bdrs-l);
-  margin-block-start: calc(var(--space-4) * -1);
-}
-
-.exercise-content {
-  // grid-row: span 2;
-}
-
-.exercise-content details {
-  // position: relative;
-  // border: 2px solid hsl(264deg 40% 85%);
-  // border: 2px solid transparent;
-  // background: linear-gradient(hsl(257 54% 95%), hsl(257 54% 95%)) padding-box,
-  //   linear-gradient(to bottom right, #d6c9e8, 60%, #d6c9e800 90%) border-box;
-  display: inline-grid;
-  // border-radius: var(--bdrs-md);
-}
-
-.exercise-content details[open] summary {
-  border-radius: var(--bdrs-l) var(--bdrs-l) 0 0;
-  // border-block-end: 2px solid hsl(154 29% 90%);
-  // width: auto;
-  // border-radius: var(--bdrs-sm) var(--bdrs-sm) 0 0;
-  svg {
-    transform: rotate3d(0, 0, 1, -180deg);
-  }
-}
-
-.exercise-content summary {
-  padding: var(--space-3);
-  background: #e9eef4;
-  border-radius: var(--bdrs-l);
-  // position: absolute;
-  // inset-block-start: -0.35rem;
-  // background: #efebf9;
-  // padding-inline: var(--space-1);
-  // margin-inline-start: 0.4rem;
-  // justify-self: start;
-
-  // border-radius: var(--bdrs-sm);
-  color: var(--ui-accent);
-  // background: hsl(264deg 35% 90%);
-  // background: linear-gradient(to bottom right, #e4ddee, 60%, #e4ddee00 90%)
-  //   border-box;
-  inline-size: max-content;
-  // padding: var(--space-3) var(--space-4) var(--space-1);
-  text-transform: uppercase;
-  // font-family: "Wotfard", Segoe UI, system-ui, -apple-system, sans-serif;
-  font-variation-settings: "wdth" 120;
-  font-family: "Mona Sans", system-ui;
-  font-size: 0.7em;
-  font-weight: 700;
-  // color: hsl(153 20% 40%);
-  cursor: pointer;
-  user-select: none;
-  touch-action: manipulation;
-  letter-spacing: 0.05em;
-  text-decoration: underline 0.25em var(--blue-500);
-  text-underline-offset: 0.125em;
-
-  display: flex;
-  gap: 0.3ch;
-
-  svg {
-    transition: 0.2s cubic-bezier(0.1, 0, 0.1, 1);
-
-    path {
-      stroke-width: 3px;
-    }
-  }
-}
-
-.exercise-content summary::-webkit-details-marker {
-  display: none;
-}
-
 section [data-no-hints] {
   text-transform: uppercase;
   font-family: "Mona Sans", system-ui;
@@ -526,58 +429,6 @@ section [data-no-hints] {
 //   content: "•\00a0";
 //   color: var(--m, currentColor);
 // }
-
-.hints li[data-type] {
-  display: flex;
-  white-space: break-spaces;
-  align-items: center;
-
-  background: linear-gradient(90deg, var(--blue-700), transparent),
-    var(--blue-800);
-  padding: var(--space-4);
-  border-radius: var(--bdrs-md);
-  margin: -3px -5px;
-}
-
-.hints li[data-type] + li[data-type] {
-  padding-inline-end: calc(var(--space-4) + 3px);
-}
-
-.hints code {
-  display: inline-block;
-  padding-inline: var(--space-2);
-  padding-block: 0;
-  font-size: 0.9em;
-  // background: var(--blue-800);
-  color: var(--m, var(--ui-primary));
-  border-radius: var(--bdrs-md);
-}
-
-.hints li::before {
-  content: "";
-  content: none;
-  color: var(--m, currentColor);
-  box-shadow: 0 0 0px black;
-  inline-size: var(--space-2);
-  block-size: var(--space-2);
-  border-radius: 50%;
-  background: var(--m);
-  margin-inline-end: var(--space-3);
-  box-shadow: 0 0 0 1px var(--mbg);
-  flex-shrink: 0;
-}
-
-:is(.exercise-details p > code, .hints li)[data-type="property"] {
-  // --m: hsl(153 70% 50%);
-  // --m: var(--ui-primary);
-  --m: #fff;
-  --mbg: var(--blue-700);
-}
-
-:is(.exercise-details p > code, .hints li)[data-type="value"] {
-  --m: var(--ui-secondary);
-  --mbg: var(--pink-900);
-}
 
 .output:is(.editor:focus-within + *) {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %23a9bcce; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 1s infinite linear'/%3E%3C/svg%3E")
@@ -848,7 +699,6 @@ section.bg-image .output > div {
     }
   }
 }
-
 
 button {
   --btn-icon: var(--blue-muted);

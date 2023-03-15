@@ -1,0 +1,83 @@
+---
+const { hints } = Astro.props;
+---
+
+<ul class="hints">
+  {
+    hints.map((hint) => {
+      return (
+        <li data-type={hint.type}>
+          <code>{hint.name}</code>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  .hints {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: var(--space-1) var(--space-4);
+    margin-block-start: var(--space-2);
+    border-radius: var(--bdrs-md);
+
+    overflow: hidden;
+    padding: 2.5px;
+
+    padding: calc(var(--space-3) + 3px) calc(var(--space-3) + 5px);
+    background: #e9eef4;
+    border-radius: var(--bdrs-l);
+    margin-block-start: calc(var(--space-4) * -1);
+  }
+
+  [data-type="property"] {
+    --m: #fff;
+    --mbg: var(--blue-700);
+  }
+
+  [data-type="value"] {
+    --m: var(--ui-secondary);
+    --mbg: var(--pink-900);
+  }
+
+  li[data-type] {
+    display: flex;
+    white-space: break-spaces;
+    align-items: center;
+
+    background: linear-gradient(90deg, var(--blue-700), transparent),
+      var(--blue-800);
+    padding: var(--space-4);
+    border-radius: var(--bdrs-md);
+    margin: -3px -5px;
+  }
+
+  li[data-type] + li[data-type] {
+    padding-inline-end: calc(var(--space-4) + 3px);
+  }
+
+  code {
+    display: inline-block;
+    padding-inline: var(--space-2);
+    padding-block: 0;
+    font-size: 0.9em;
+    color: var(--m, var(--ui-primary));
+    border-radius: var(--bdrs-md);
+  }
+
+  li::before {
+    content: "";
+    content: none;
+    color: var(--m, currentColor);
+    box-shadow: 0 0 0px black;
+    inline-size: var(--space-2);
+    block-size: var(--space-2);
+    border-radius: 50%;
+    background: var(--m);
+    margin-inline-end: var(--space-3);
+    box-shadow: 0 0 0 1px var(--mbg);
+    flex-shrink: 0;
+  }
+</style>

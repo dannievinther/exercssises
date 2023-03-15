@@ -1,16 +1,11 @@
 ---
 import { Icon } from "astro-icon";
+import HintList from "./HintList.astro";
 const { hints } = Astro.props;
 
-function getHints(hints, type) {
-  return hints
-    .filter((hint) => hint.type === type)
-    .map((prop) => {
-      return {
-        type: prop.type,
-        name: prop.name,
-      };
-    });
+const types = [...new Set(hints.map((h) => h.type))];
+function getHints(type) {
+  return hints.filter((hint) => hint.type === type);
 }
 ---
 
@@ -19,30 +14,50 @@ function getHints(hints, type) {
     Hints
     <Icon name="chevron-down" width="16" height="16" aria-hidden="true" />
   </summary>
-  {
-    hints.some((hint) => hint.type === "property") && (
-      <ul class="hints properties">
-        {getHints(hints, "property").map((hint) => {
-          return (
-            <li data-type={hint.type}>
-              <code>{hint.name}</code>
-            </li>
-          );
-        })}
-      </ul>
-    )
-  }
-  {
-    hints.some((hint) => hint.type === "value") && (
-      <ul class="hints values">
-        {getHints(hints, "value").map((hint) => {
-          return (
-            <li data-type={hint.type}>
-              <code>{hint.name}</code>
-            </li>
-          );
-        })}
-      </ul>
-    )
-  }
+  {types.map((type) => <HintList hints={getHints(type)} />)}
 </details>
+
+<style lang="scss">
+  details {
+    display: inline-grid;
+  }
+
+  details[open] summary {
+    border-radius: var(--bdrs-l) var(--bdrs-l) 0 0;
+    svg {
+      transform: rotate3d(0, 0, 1, -180deg);
+    }
+  }
+
+  summary {
+    padding: var(--space-3);
+    background: #e9eef4;
+    border-radius: var(--bdrs-l);
+    color: var(--ui-accent);
+    inline-size: max-content;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 120;
+    font-family: "Mona Sans", system-ui;
+    font-size: 0.7em;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 0.05em;
+    text-decoration: underline 0.25em var(--blue-500);
+    text-underline-offset: 0.125em;
+
+    display: flex;
+    gap: 0.3ch;
+  }
+
+  [astro-icon] {
+    transition: 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+    :global(path) {
+      stroke-width: 3px;
+    }
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
