@@ -157,3 +157,36 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
     }
   }
 </style>
+
+<script>
+  const sections = document.querySelectorAll("section");
+
+  sections.forEach((section) => {
+    const confirmButtons = section.querySelectorAll(
+      ".button-group-confirm button"
+    );
+
+    confirmButtons.forEach((button) => {
+      button.addEventListener("keydown", (event) => {
+        const currentButton = event.target;
+        let newButton;
+
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          event.preventDefault();
+          newButton = currentButton.nextElementSibling || confirmButtons[0];
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          event.preventDefault();
+          newButton =
+            currentButton.previousElementSibling ||
+            confirmButtons[confirmButtons.length - 1];
+        }
+
+        if (newButton) {
+          currentButton.setAttribute("tabindex", "-1");
+          newButton.setAttribute("tabindex", "0");
+          newButton.focus();
+        }
+      });
+    });
+  });
+</script>

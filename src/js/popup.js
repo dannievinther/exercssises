@@ -1,6 +1,6 @@
 const popup = Array.from(document.querySelectorAll(".popup"));
 popup.forEach((pop) => {
-  const popupSum = Array.from(pop.querySelectorAll("summary"));
+  const popupSum = pop.querySelector("summary");
   if (popupSum.length === 0) return;
   pop.addEventListener(
     "click",

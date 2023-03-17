@@ -1,32 +1,29 @@
+import { prefix } from "./utils";
+
 const sections = document.querySelectorAll("section");
-// const classReg = /[^,/*{}\s]+(?![^{]*})/g;
-const classReg = /(?!\s)[^,()/*{}]+(?![^{]*})/g;
 
 sections.forEach((section) => {
   const styleTag = section.querySelector(".editor > style");
   const textarea = section.querySelector(".editor > textarea");
   const output = section.querySelector(".output");
-  let startingCSS = textarea.innerHTML;
+  let startingCSS = textarea.textContent;
   const exerciseKey = section.dataset.exerciseKey;
   const boxKey = `box-${exerciseKey}`;
-  let isExtra = section.dataset.extra;
+  const isExtra = section.dataset.extra;
 
   const boxContainer = section.querySelector(".container");
 
+  const btnControlsContainer = section.querySelector(".controls");
   const addBtn = section.querySelector(".plus");
   const removeBtn = section.querySelector(".minus");
 
   let boxCount = boxContainer.children.length || 1;
   const maxBoxCount = 12;
-  const saveLocally = () => localStorage.setItem(boxKey, boxCount);
+  const saveToLocalStorage = (key, value) => localStorage.setItem(key, value);
 
   const reset = section.querySelector(".reset");
   const confirming = section.querySelector(".button-group-confirm");
   const resetBtns = section.querySelector(".reset-buttons");
-
-  output.addEventListener("dblclick", (_) => {
-    output.hasAttribute("style") && output.removeAttribute("style");
-  });
 
   function createBox(count) {
     const box = document.createElement("div");
@@ -70,12 +67,19 @@ sections.forEach((section) => {
 
   function modifyBoxes(action) {
     action();
-    saveLocally();
+    saveToLocalStorage(boxKey, boxCount);
     updateButtonState();
   }
 
-  addBtn?.addEventListener("click", () => modifyBoxes(addBox));
-  removeBtn?.addEventListener("click", () => modifyBoxes(removeBox));
+  btnControlsContainer?.addEventListener("click", (event) => {
+    const { target } = event;
+
+    if (target.classList.contains("plus")) {
+      modifyBoxes(addBox);
+    } else if (target.classList.contains("minus")) {
+      modifyBoxes(removeBox);
+    }
+  });
 
   function setButtonDisabledState(button, isDisabled) {
     if (!button) return;
@@ -87,80 +91,9 @@ sections.forEach((section) => {
     setButtonDisabledState(addBtn, boxCount >= maxBoxCount);
   }
 
-  const init = () => {
-    if (boxCount > maxBoxCount) {
-      boxCount = maxBoxCount;
-      const newBoxes = Array.from({ length: maxBoxCount }, (_, index) =>
-        createBox(index + 1)
-      );
-      boxContainer.replaceChildren(...newBoxes);
-    }
-    loadLocalStorageBoxes();
-    updateButtonState();
-
-    styleTag.innerHTML = prefix(textarea.value);
-
-    if (localStorage.getItem(exerciseKey)) {
-      textarea.value = localStorage.getItem(exerciseKey);
-      styleTag.innerHTML = prefix(textarea.value);
-    }
-
-    if (localStorage.getItem(`extra-${exerciseKey}`)) {
-      document.documentElement.dataset.extra = "true";
-    }
-
-    if (textarea.value !== startingCSS) {
-      reset.disabled = false;
-    } else {
-      reset.disabled = true;
-    }
-
-    textarea.addEventListener("input", (e) => {
-      styleTag.innerHTML = prefix(e.target.value);
-      localStorage.setItem(exerciseKey, textarea.value);
-
-      if (isExtra) {
-        localStorage.setItem(`extra-${exerciseKey}`, true);
-      }
-
-      if (textarea.value === "") {
-        localStorage.removeItem(exerciseKey);
-        localStorage.removeItem(`extra-${exerciseKey}`);
-      }
-
-      if (textarea.value !== startingCSS) {
-        reset.disabled = false;
-      } else {
-        reset.disabled = true;
-      }
-    });
-  };
-
-  init();
-
-  function prefix(str) {
-    return str.replaceAll(
-      classReg,
-      (match) => `[data-exercise-key="${exerciseKey}"] .output ${match}`
-    );
+  function updateResetButtonState() {
+    reset.disabled = textarea.value === startingCSS;
   }
-
-  reset.addEventListener("click", (e) => {
-    if (textarea.value === "") {
-      resetUI();
-    } else {
-      reset.setAttribute("inert", "");
-      resetBtns.classList.add("active");
-      confirming.querySelector(":scope > :first-child").focus();
-    }
-  });
-
-  confirming.addEventListener("click", ({ target }) => {
-    let option = target.dataset.accept;
-    if (option === "true") resetUI();
-    resetBtns.classList.remove("active");
-    reset.removeAttribute("inert");
-  });
 
   function resetUI() {
     if (localStorage.getItem(exerciseKey) || textarea.value === "") {
@@ -182,6 +115,103 @@ sections.forEach((section) => {
       reset.disabled = false;
     }
   }
+
+  function init() {
+    if (boxCount > maxBoxCount) {
+      boxCount = maxBoxCount;
+      const newBoxes = Array.from({ length: maxBoxCount }, (_, index) =>
+        createBox(index + 1)
+      );
+      boxContainer.replaceChildren(...newBoxes);
+    }
+    loadLocalStorageBoxes();
+    updateButtonState();
+
+    styleTag.innerHTML = prefix(textarea.value, exerciseKey);
+
+    if (localStorage.getItem(exerciseKey)) {
+      textarea.value = localStorage.getItem(exerciseKey);
+      styleTag.innerHTML = prefix(textarea.value, exerciseKey);
+    }
+
+    if (localStorage.getItem(`extra-${exerciseKey}`)) {
+      document.documentElement.dataset.extra = "true";
+    }
+
+    updateResetButtonState();
+
+    textarea.addEventListener("input", (e) => {
+      styleTag.innerHTML = prefix(e.target.value, exerciseKey);
+      saveToLocalStorage(exerciseKey, textarea.value);
+
+      if (isExtra) {
+        saveToLocalStorage(`extra-${exerciseKey}`, true);
+      }
+
+      if (textarea.value === "") {
+        localStorage.removeItem(exerciseKey);
+        localStorage.removeItem(`extra-${exerciseKey}`);
+      }
+
+      updateResetButtonState();
+    });
+  }
+
+  init();
+
+  output.addEventListener("dblclick", (_) => {
+    output.hasAttribute("style") && output.removeAttribute("style");
+  });
+
+  reset.addEventListener("click", (e) => {
+    if (textarea.value === "") {
+      resetUI();
+    } else {
+      reset.setAttribute("inert", "");
+      resetBtns.classList.add("active");
+      confirming.querySelector(":scope > :first-child").focus();
+    }
+  });
+
+  confirming.addEventListener("click", ({ target }) => {
+    let option = target.dataset.accept;
+    if (option === "true") resetUI();
+    resetBtns.classList.remove("active");
+    reset.removeAttribute("inert");
+    target.blur();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      const resetBtnGroup = section.querySelectorAll(
+        ".button-group-confirm button"
+      );
+      const focusedElement = document.activeElement;
+
+      if (focusedElement === textarea) {
+        const closestSection = focusedElement.closest("section");
+        const resetButton = closestSection.querySelector(".reset");
+        const btnGroup = closestSection.querySelectorAll(
+          ".button-group-confirm button"
+        );
+        if (!resetButton.disabled) {
+          resetButton.focus();
+        }
+        if (resetButton.inert) {
+          btnGroup[0].focus();
+        }
+      }
+      if (
+        focusedElement === reset ||
+        focusedElement === resetBtnGroup[0] ||
+        focusedElement === resetBtnGroup[1]
+      ) {
+        const closestSection = focusedElement.closest("section");
+        const textarea = closestSection.querySelector("textarea");
+        textarea.focus();
+      }
+    }
+  });
 });
 
 // const keySequence = [];
