@@ -176,7 +176,7 @@ sections.forEach((section) => {
   confirming.addEventListener("click", ({ target }) => {
     let option = target.dataset.accept;
     if (option === "true") resetUI();
-    textarea.focus();
+    if (option === "false") textarea.focus();
     resetBtns.classList.remove("active");
     reset.removeAttribute("inert");
   });
