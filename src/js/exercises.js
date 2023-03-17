@@ -176,9 +176,9 @@ sections.forEach((section) => {
   confirming.addEventListener("click", ({ target }) => {
     let option = target.dataset.accept;
     if (option === "true") resetUI();
+    textarea.focus();
     resetBtns.classList.remove("active");
     reset.removeAttribute("inert");
-    target.blur();
   });
 
   document.addEventListener("keydown", (event) => {
