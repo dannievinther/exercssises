@@ -451,7 +451,8 @@ section [data-no-hints] {
 }
 
 .output:is(.editor:focus-within + *) .box {
-  background: hsl(153 82% 76%);
+  // background: hsl(153 82% 76%);
+  filter: brightness(0.95);
 }
 
 .output {
@@ -568,19 +569,28 @@ section.bg-image .output > div {
 }
 
 .box {
+  --ui-primary: hsl(153.07deg 89.8% 80.78%);
+  --ui-primary-border: hsl(153.07deg 79.8% 39.78%);
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // box-shadow: 0 0 0 1px var(--ui-bg-3);
+  // text-align: center;
+  // background: var(--ui-primary);
+  // color: var(--ui-bg-2);
+  // font-weight: 500;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  // box-shadow: 0 0 0 1px hsl(289 27% 19%);
-  box-shadow: 0 0 0 1px var(--ui-bg-3);
-  /*min-inline-size: var(--space-6);
-  min-block-size: var(--space-6);*/
   text-align: center;
-  background: var(--ui-primary);
-  // color: #2a2139;
+  background: hsl(153.07deg 81.94% 69.61%);
   color: var(--ui-bg-2);
-  font-weight: 500;
-  counter-increment: count;
+  border-radius: 3px;
+  background-color: var(--ui-primary);
+  box-shadow: 0 0 0 1px var(--ui-primary-border),
+    0 2px 2px rgba(0, 90, 250, 0.05), 0 4px 4px rgba(0, 90, 250, 0.05),
+    0 8px 8px rgba(0, 90, 250, 0.05), 0 16px 16px rgba(0, 90, 250, 0.05);
 }
 
 .box::before {
