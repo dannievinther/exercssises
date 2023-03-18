@@ -50,11 +50,11 @@ const {
       ) : (
         <Picture
           loading={num === 1 ? "eager" : "lazy"}
-          fetchpriority={num === 1 ? "high" : "low"}
           src={targetSrc.path}
           formats={["avif", "webp"]}
           aspectRatio={targetSrc.width / targetSrc.height}
           alt=""
+          sizes={targetSrc.width}
           widths={[targetSrc.width]}
           width={targetSrc.width}
           height={targetSrc.height}
