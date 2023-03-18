@@ -1,7 +1,9 @@
 ---
+import { Picture } from "@astrojs/image/components";
 import ExerciseLabel from "./exercise/ExerciseLabel.astro";
 import BtnControls from "./exercise/BtnControls.astro";
 import Editor from "./exercise/Editor.astro";
+import Output from "./exercise/Output.astro";
 import Hints from "./exercise/Hints.astro";
 const { data, num, all } = Astro.props;
 const boxes = [...Array(data.frontmatter.boxes)];
@@ -46,11 +48,14 @@ const {
           <source src={targetSrc.path} type="video/mp4" />
         </video>
       ) : (
-        <img
+        <Picture
           loading={num === 1 ? "eager" : "lazy"}
           fetchpriority={num === 1 ? "high" : "low"}
           src={targetSrc.path}
+          formats={["avif", "webp"]}
+          aspectRatio={targetSrc.width / targetSrc.height}
           alt=""
+          widths={[targetSrc.width]}
           width={targetSrc.width}
           height={targetSrc.height}
         />
@@ -69,15 +74,7 @@ const {
     helpTopic={help?.topic}
   />
 
-  <div class="output">
-    <div class="container">
-      {
-        boxes.map((_, index) => (
-          <div class={`box box-${index + 1}`}>.box-{index + 1}</div>
-        ))
-      }
-    </div>
-  </div>
+  <Output {boxes} />
 </section>
 
 <style lang="scss">

@@ -1,0 +1,57 @@
+---
+const { boxes } = Astro.props;
+---
+
+<div class="output">
+  <div class="container">
+    {
+      boxes.map((_, index) => (
+        <div class={`box box-${index + 1}`}>.box-{index + 1}</div>
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  .box {
+    --ui-primary: hsl(153.07deg 89.8% 80.78% / 95%);
+    --ui-primary-border: hsl(153.07deg 79.8% 39.78%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: hsl(153.07deg 81.94% 69.61%);
+    color: var(--ui-bg-2);
+    border-radius: 3px;
+    background-color: var(--ui-primary);
+    box-shadow: 0 0 0 1px var(--ui-primary-border),
+      0 2px 2px rgba(0, 90, 250, 0.05), 0 4px 4px rgba(0, 90, 250, 0.05),
+      0 8px 8px rgba(0, 90, 250, 0.05), 0 16px 16px rgba(0, 90, 250, 0.05);
+    backdrop-filter: blur(1px);
+  }
+
+  .box {
+    --min-font: 12;
+    --max-font: 29;
+    --screen-max: 895;
+    --screen-min: 375;
+    font-size: clamp(
+      var(--min-font) * 1px,
+      var(--responsive),
+      var(--max-font) * 1px
+    );
+
+    @media (min-width: 896px) {
+      --min-font: 14;
+      --max-font: 20;
+      --screen-max: 1200;
+      --screen-min: 896;
+      font-size: clamp(
+        var(--min-font) * 1px,
+        var(--responsive),
+        var(--max-font) * 1px
+      );
+    }
+  }
+</style>

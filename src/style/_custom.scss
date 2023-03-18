@@ -519,10 +519,12 @@ section [data-no-hints] {
   padding: 0.2em 0.3em;
   line-height: 1;
   margin-inline: auto;
-  background: #fffd;
+  background: hsl(153 50% 98% / 50%);
   border-radius: var(--bdrs-sm);
   pointer-events: none;
   transform: translateY(100%);
+  backdrop-filter: blur(3px);
+  z-index: 2;
 }
 
 .output[style]::before {
@@ -566,70 +568,6 @@ section.bg-image .output > div {
     50% / cover; */
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="32" height="24" fill="%2346386622"><path d="M0,0v24h32V0H0z M4,20l6-14l5,8l3-4l6,10H4z M25,3c2.2,0,4,1.8,4,4s-1.8,4-4,4s-4-1.8-4-4S22.8,3,25,3"/></svg>')
     50% / cover transparent;
-}
-
-.box {
-  --ui-primary: hsl(153.07deg 89.8% 80.78%);
-  --ui-primary-border: hsl(153.07deg 79.8% 39.78%);
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // box-shadow: 0 0 0 1px var(--ui-bg-3);
-  // text-align: center;
-  // background: var(--ui-primary);
-  // color: var(--ui-bg-2);
-  // font-weight: 500;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: hsl(153.07deg 81.94% 69.61%);
-  color: var(--ui-bg-2);
-  border-radius: 3px;
-  background-color: var(--ui-primary);
-  box-shadow: 0 0 0 1px var(--ui-primary-border),
-    0 2px 2px rgba(0, 90, 250, 0.05), 0 4px 4px rgba(0, 90, 250, 0.05),
-    0 8px 8px rgba(0, 90, 250, 0.05), 0 16px 16px rgba(0, 90, 250, 0.05);
-}
-
-.box::before {
-  // content: ".box-" counter(count) " ";
-  // display: contents;
-  font-weight: 500;
-}
-
-.box[contenteditable="true"]:hover {
-  background: linear-gradient(#287ba8, #287ba8) content-box,
-    linear-gradient(#6a54ab, #6a54ab) padding-box;
-  background: linear-gradient(#89b2be, #89b2be) content-box,
-    linear-gradient(#b8c47f, #b8c47f) padding-box;
-  border-color: #38383d !important;
-  border-color: #e3c382 !important;
-}
-
-.container .box {
-  --min-font: 12;
-  --max-font: 29;
-  --screen-max: 895;
-  --screen-min: 375;
-  font-size: clamp(
-    var(--min-font) * 1px,
-    var(--responsive),
-    var(--max-font) * 1px
-  );
-
-  @media (min-width: 896px) {
-    --min-font: 14;
-    --max-font: 20;
-    --screen-max: 1200;
-    --screen-min: 896;
-    font-size: clamp(
-      var(--min-font) * 1px,
-      var(--responsive),
-      var(--max-font) * 1px
-    );
-  }
 }
 
 .editor {
