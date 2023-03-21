@@ -12,8 +12,8 @@ const { boxes } = Astro.props;
   </div>
 </div>
 
-<style lang="scss" is:global>
-  .box {
+<style lang="scss">
+  :global(.box) {
     --ui-primary: hsl(153.07deg 89.8% 80.78% / 95%);
     --ui-primary-border: hsl(153.07deg 79.8% 39.78%);
 
@@ -31,7 +31,7 @@ const { boxes } = Astro.props;
     backdrop-filter: blur(1px);
   }
 
-  .box {
+  :global(.box) {
     --min-font: 12;
     --max-font: 29;
     --screen-max: 895;
@@ -52,6 +52,145 @@ const { boxes } = Astro.props;
         var(--responsive),
         var(--max-font) * 1px
       );
+    }
+  }
+
+  .output:is(.editor:focus-within + *) {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %23a9bcce; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 1s infinite linear'/%3E%3C/svg%3E")
+      border-box;
+
+    border-color: transparent;
+    // box-shadow: 0 0 36px #5000ca22;
+    // filter: drop-shadow(0 0 15px #5000ca11);
+    transition: filter 0.15s;
+  }
+
+  .output:is(.editor:focus-within + *):hover > .container {
+    background: repeating-linear-gradient(
+          -45deg,
+          #7740c8 0 1.5px,
+          #938fe2 0 7.5px
+        )
+        content-box,
+      #f1eef5;
+  }
+
+  .output:is(.editor:focus-within + *) .box {
+    // background: hsl(153 82% 76%);
+    filter: brightness(0.95);
+  }
+
+  .output:is(section.gap-reset *) > div {
+    gap: 1px 0;
+  }
+
+  .output {
+    --padding: var(--space-2);
+    display: grid;
+    align-self: start;
+    position: relative;
+    // max-inline-size: 100%;
+    max-inline-size: calc(100% + (var(--padding) * 2));
+    max-block-size: 500px;
+    border: 2px dashed transparent;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Helvetica Neue", Arial, sans-serif;
+    resize: both;
+    overflow: hidden;
+    // border-radius: var(--bdrs-l);
+    user-select: none;
+    border-radius: var(--bdrs-sm);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E@keyframes ant %7Bto %7Bstroke-dashoffset: -8;%7D%7D%3C/style%3E%3Crect width='100%25' height='100%25' style='stroke: %23a9bcce; stroke-width: 3.75px; fill: none;stroke-dasharray: 5 3; animation: ant 0s infinite linear'/%3E%3C/svg%3E")
+      border-box;
+    padding: var(--padding);
+    margin: calc(var(--padding) * -1);
+
+    @media (max-width: 895px) {
+      resize: revert;
+      // overflow: revert;
+    }
+  }
+
+  .output::-webkit-resizer {
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .output::after {
+    content: "↖";
+    display: grid;
+    place-content: center;
+    font-weight: 900;
+    position: absolute;
+    bottom: calc(-1 * var(--space-3));
+    right: calc(-1 * var(--space-3));
+    inline-size: var(--space-6);
+    block-size: var(--space-6);
+    border-radius: var(--bdrs-round);
+    // background: #fb28a8;
+    border: 2px solid var(--ui-accent);
+    color: var(--ui-accent);
+    background: var(--ui-surface);
+    pointer-events: none;
+    z-index: 2;
+
+    @media (max-width: 895px) {
+      display: none;
+    }
+  }
+
+  .output::before {
+    content: "Dobbeltklik for at nulstille højde/bredde";
+    font-weight: 500;
+    position: absolute;
+    inset: auto 0 0;
+    inline-size: fit-content;
+    font-size: 0.8em;
+    padding: 0.2em 0.3em;
+    line-height: 1;
+    margin-inline: auto;
+    background: hsl(153 50% 98% / 50%);
+    border-radius: var(--bdrs-sm);
+    pointer-events: none;
+    transform: translateY(100%);
+    backdrop-filter: blur(3px);
+    z-index: 2;
+  }
+
+  .output[style]::before {
+    transform: none;
+    transition: 0.2s 0.5s transform;
+  }
+
+  .output > div {
+    grid-area: 1 / -1;
+    padding: var(--space-1);
+    place-self: center;
+    justify-self: stretch;
+    align-self: stretch;
+    gap: 1px;
+    background: #f1eef5;
+  }
+
+  :global(section.stretch) .output {
+    align-self: stretch;
+  }
+
+  .output:is(section.bg-image *) > div {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="32" height="24" fill="%2346386622"><path d="M0,0v24h32V0H0z M4,20l6-14l5,8l3-4l6,10H4z M25,3c2.2,0,4,1.8,4,4s-1.8,4-4,4s-4-1.8-4-4S22.8,3,25,3"/></svg>')
+      50% / cover transparent;
+  }
+
+  .output:is(section.logo-box *) .box:nth-child(1) {
+    padding: 1rem;
+    display: grid;
+    font-size: 80%;
+    line-height: 1.2;
+
+    &::before {
+      content: "Logo";
+      font-size: 2rem;
+      font-weight: 900;
     }
   }
 </style>
