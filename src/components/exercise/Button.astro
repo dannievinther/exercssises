@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Sprite } from "astro-icon";
 const { icon } = Astro.props;
 ---
 
@@ -9,9 +9,9 @@ const { icon } = Astro.props;
     </svg> -->
   {
     icon === "minus" ? (
-      <Icon name="lucide:minus-circle" width="18" fill="none" />
+      <Sprite name="lucide:minus-circle" width="18" fill="none" />
     ) : (
-      <Icon name="lucide:plus-circle" width="18" fill="none" />
+      <Sprite name="lucide:plus-circle" width="18" fill="none" />
     )
   }
   <span><slot /></span>

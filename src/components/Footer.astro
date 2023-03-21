@@ -1,9 +1,9 @@
 ---
-import { Icon } from "astro-icon";
+import { Sprite } from "astro-icon";
 const { label = "", linkTo = "/" } = Astro.props;
 const year = new Date().getFullYear();
 
-import chevronright from "../icons/chevron-right.svg?raw";
+// import chevronright from "../icons/chevron-right.svg?raw";
 
 const notHome = Astro.url.pathname !== "/";
 ---
@@ -17,7 +17,7 @@ const notHome = Astro.url.pathname !== "/";
 }
 <footer>
   <a href={linkTo} class="more-exercises"
-    >Prøv også {label} <Fragment set:html={chevronright} /></a
+    >Prøv også {label} <Sprite name="lucide:chevron-right" /></a
   >
 
   <small><span>© {year}&nbsp;Vinther.codes</span></small>
@@ -58,6 +58,12 @@ const notHome = Astro.url.pathname !== "/";
         color: var(--blue-500);
       }
     }
+  }
+
+  [astro-icon="lucide:chevron-right"] {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 2;
   }
 
   div {

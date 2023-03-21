@@ -1,12 +1,11 @@
 ---
-import { Icon } from "astro-icon";
+import { Sprite } from "astro-icon";
 const { title, num, all } = Astro.props;
-
 ---
 
 <h2 class="small-label" id={`exercise-${num}`}>
   <a href={`#exercise-${num}`}>
-    <Icon name="link" width="18" height="18" stroke-width="2.5" />
+    <Sprite name="link" width="18" height="18" stroke-width="2.5" />
     {title}
   </a>
   <span>{num} / {all}</span>

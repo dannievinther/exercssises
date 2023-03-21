@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Sprite } from "astro-icon";
 const { boxes } = Astro.props;
 const boxCount = boxes
   .map(
@@ -17,7 +17,7 @@ const htmlContentAlt = `<div class="container">
 
 <details class="popup">
   <summary>
-    <Icon name="lucide:file-code" />
+    <Sprite name="lucide:file-code" />
     HTML
   </summary>
   <div>

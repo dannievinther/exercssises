@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Sprite } from "astro-icon";
 import HintList from "./HintList.astro";
 const { hints } = Astro.props;
 
@@ -12,7 +12,7 @@ function getHints(type) {
 <details>
   <summary>
     Hints
-    <Icon name="chevron-down" width="16" height="16" aria-hidden="true" />
+    <Sprite name="chevron-down" width="16" height="16" aria-hidden="true" />
   </summary>
   {types.map((type) => <HintList hints={getHints(type)} />)}
 </details>
@@ -27,6 +27,10 @@ function getHints(type) {
     svg {
       transform: rotate3d(0, 0, 1, -180deg);
     }
+  }
+
+  [astro-icon="chevron-down"] {
+    stroke-width: 3px;
   }
 
   summary {

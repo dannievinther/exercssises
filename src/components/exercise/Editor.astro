@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Sprite } from "astro-icon";
 import Popup from "./Popup.astro";
 
 const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
@@ -10,16 +10,16 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
   <div class="reset-buttons">
     <button class="reset">
       <span class="visually-hidden">Nulstil</span>
-      <Icon name="subway:refresh-time" width="16" height="16" />
+      <Sprite name="subway:refresh-time" width="16" height="16" />
     </button>
     <div class="button-group-confirm">
       <button data-accept="true" data-message="Accepter">
         <span class="visually-hidden">Accepter nulstilling</span>
-        <Icon name="check" width="18" height="18" />
+        <Sprite name="check" width="18" height="18" />
       </button>
       <button data-accept="false" data-message="Afvis">
         <span class="visually-hidden">Afvis nulstilling</span>
-        <Icon name="x" width="18" height="18" />
+        <Sprite name="x" width="18" height="18" />
       </button>
     </div>
   </div>
@@ -39,7 +39,7 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
           Har du brug for hjælp?{" "}
           <a href={helpLink} target="_blank" rel="noopener">
             <span>Lær mere om {helpTopic}</span>
-            <Icon
+            <Sprite
               name="external-link"
               width="14"
               height="14"
@@ -143,7 +143,12 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
     border-radius: var(--bdrs-round);
   }
 
-  :global(button svg path) {
+  :global(button path) {
+    stroke-width: 3;
+  }
+
+  [astro-icon="check"],
+  [astro-icon="x"] {
     stroke-width: 3;
   }
 

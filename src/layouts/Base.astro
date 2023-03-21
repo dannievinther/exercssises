@@ -3,6 +3,7 @@ import "/src/style/global.scss";
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { Sprite } from "astro-icon";
 
 const { title } = Astro.props;
 
@@ -15,13 +16,15 @@ const link = title === "Grid-exercises" ? "/flex" : "/grid";
     <Head title={title} />
   </head>
   <body>
-    <Header />
+    <Sprite.Provider>
+      <Header />
 
-    <main>
-      <slot />
-    </main>
+      <main>
+        <slot />
+      </main>
 
-    <Footer label={label} linkTo={link} />
+      <Footer label={label} linkTo={link} />
+    </Sprite.Provider>
     <script is:inline src="/script/bliss.js" fetchpriority="low"></script>
     <script is:inline src="/script/prism.js" fetchpriority="low"></script>
     <script is:inline src="/script/prism-live.js" fetchpriority="low"></script>

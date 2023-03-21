@@ -284,6 +284,10 @@ main {
 //   background: #fff;
 // }
 
+path {
+  stroke-width: inherit;
+}
+
 section {
   grid-column: 2 / -2;
 

@@ -1,12 +1,11 @@
 ---
-import { Icon } from "astro-icon";
-import chevronleft from "../icons/chevron-left.svg?raw";
+import { Sprite } from "astro-icon";
+// import chevronleft from "../icons/chevron-left.svg?raw";
 ---
 
 <header class="main-header">
   <a class="back" href="/">
-    <!--<Icon name="chevron-left" width="18" />-->
-    <Fragment set:html={chevronleft} />
+    <Sprite name="chevron-left" width="18" />
     &nbsp;Til exercssises</a
   >
 
@@ -73,14 +72,13 @@ import chevronleft from "../icons/chevron-left.svg?raw";
       &:hover svg {
         color: #212529;
       }
+    }
 
-      svg {
-        color: var(--gray-200);
-
-        path {
-          stroke-width: 3;
-        }
-      }
+    [astro-icon="chevron-left"] {
+      width: 1.125rem;
+      height: 1.125rem;
+      color: var(--gray-200);
+      stroke-width: 3;
     }
 
     .btn:any-link {
