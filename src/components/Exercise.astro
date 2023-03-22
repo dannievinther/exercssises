@@ -1,10 +1,10 @@
 ---
-import { Picture } from "@astrojs/image/components";
 import ExerciseLabel from "./exercise/ExerciseLabel.astro";
 import BtnControls from "./exercise/BtnControls.astro";
 import Editor from "./exercise/Editor.astro";
 import Output from "./exercise/Output.astro";
 import Hints from "./exercise/Hints.astro";
+import TargetMedia from "./exercise/TargetMedia.astro";
 const { data, num, all } = Astro.props;
 const boxes = [...Array(data.frontmatter.boxes)];
 const { Content } = data;
@@ -42,25 +42,8 @@ const {
 
       {hints ? <Hints {hints} /> : <div data-no-hints>Ingen hints</div>}
     </div>
-    {
-      targetSrc.type === "video" ? (
-        <video muted loop autoplay playsinline preload="metadata">
-          <source src={targetSrc.path} type="video/mp4" />
-        </video>
-      ) : (
-        <Picture
-          loading={num === 1 ? "eager" : "lazy"}
-          src={targetSrc.path}
-          formats={["avif", "webp"]}
-          aspectRatio={targetSrc.width / targetSrc.height}
-          alt=""
-          sizes={targetSrc.width}
-          widths={[targetSrc.width]}
-          width={targetSrc.width}
-          height={targetSrc.height}
-        />
-      )
-    }
+
+    <TargetMedia {targetSrc} {num} />
 
     {canAddBoxes && <BtnControls />}
   </article>
@@ -176,6 +159,22 @@ const {
     button:hover {
       --btn-stroke: 2px;
     }
+  }
+
+  .banner {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    text-align: center;
+    padding: var(--space-3);
+    line-height: 1;
+    font-weight: 800;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: var(--space-1);
+    background: var(--ui-accent);
+    border-radius: calc(var(--bdrs-l) - (var(--space-1) / 2));
   }
 </style>
 

@@ -18,6 +18,19 @@ function getHints(type) {
 </details>
 
 <style lang="scss">
+  :global([data-no-hints]) {
+    text-transform: uppercase;
+    font-family: "Mona Sans", system-ui;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--gray-600);
+    padding: 0.45rem var(--space-4) var(--space-1);
+    border-radius: var(--bdrs-md);
+    border: 2px solid var(--gray-200);
+    width: max-content;
+    letter-spacing: 0.05em;
+  }
+
   details {
     display: inline-grid;
   }

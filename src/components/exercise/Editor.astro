@@ -36,7 +36,7 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
     {
       helpLink && helpTopic ? (
         <small>
-          Har du brug for hjælp?{" "}
+          Har du brug for hjælp?
           <a href={helpLink} target="_blank" rel="noopener">
             <span>Lær mere om {helpTopic}</span>
             <Sprite
@@ -58,6 +58,59 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
 </div>
 
 <style lang="scss">
+  .editor {
+    position: relative;
+    z-index: 1;
+    background: var(--blue-800);
+    margin: 0;
+    justify-self: stretch;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    block-size: 100%;
+    touch-action: none;
+    border-radius: var(--bdrs-l);
+
+    block-size: calc(100% + 2 * var(--space-6));
+    margin-inline-start: calc(-2 * var(--space-6));
+    margin-block-end: calc(-2 * var(--space-6));
+    box-shadow: 0 39.275px 70px -14.275px rgb(0 0 0 / 30%);
+
+    .editor-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      border-top: 1px solid hsl(208 76% 26%);
+      padding: var(--space-3) 0;
+      margin-inline: calc(var(--space-2) + var(--space-1));
+    }
+
+    @media (max-width: 895px) {
+      order: 1;
+    }
+
+    label {
+      content: "css";
+      display: block;
+      inline-size: 100%;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      line-height: 0.9;
+      padding: var(--space-4) var(--space-5);
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+        "Roboto", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 700;
+      color: var(--ui-secondary-a11y);
+      border-radius: var(--bdrs-sm) var(--bdrs-sm) 0 0;
+
+      span {
+        background: var(--blue-700);
+        color: var(--blue-500);
+        border-radius: 1e5px;
+        padding: 0.4rem 0.8rem;
+        display: inline-block;
+      }
+    }
+  }
   small {
     font-size: 0.8rem;
     font-weight: 500;
@@ -160,6 +213,60 @@ const { id, startingCSS, helpLink, helpTopic, boxes } = Astro.props;
   @media (hover: hover) {
     button:hover {
       --btn-stroke: 2px;
+    }
+  }
+  button.reset {
+    --opacity: 0;
+    --btn-stroke: 0;
+    --btn-theme: var(--blue-500);
+    position: relative;
+    color: #fff;
+    padding: 0;
+    inline-size: 28px;
+    block-size: 28px;
+    background: transparent;
+    display: grid;
+    place-content: center;
+    border-radius: var(--bdrs-round);
+  }
+
+  button.reset::before {
+    content: "Nulstil";
+    text-transform: uppercase;
+    position: absolute;
+    inset-inline-end: 100%;
+    margin-inline-end: var(--space-2);
+    inset-block-start: 0;
+    font-size: 0.7em;
+    font-family: "Mona Sans";
+    font-weight: 700;
+    block-size: 28px;
+    margin-block-start: 0.125em;
+    display: grid;
+    place-content: center;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    transition: 0.3s;
+    opacity: 0;
+  }
+
+  button.reset svg path {
+    stroke-width: 3;
+  }
+
+  button:focus-visible {
+    --btn-stroke: 2px;
+  }
+
+  @media (hover: hover) {
+    button:hover {
+      --btn-stroke: 2px;
+    }
+    button.reset:hover::before {
+      opacity: 1;
+    }
+    button[disabled] {
+      box-shadow: inset 0 0 0 0 var(--ui-accent);
     }
   }
 </style>

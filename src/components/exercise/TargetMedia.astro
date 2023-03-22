@@ -1,0 +1,33 @@
+---
+import { Picture } from "@astrojs/image/components";
+const { num, targetSrc } = Astro.props;
+---
+
+{
+  targetSrc.type === "video" ? (
+    <video muted loop autoplay playsinline preload="metadata">
+      <source src={targetSrc.path} type="video/mp4" />
+    </video>
+  ) : (
+    <Picture
+      loading={num === 1 ? "eager" : "lazy"}
+      src={targetSrc.path}
+      formats={["avif", "webp"]}
+      aspectRatio={targetSrc.width / targetSrc.height}
+      alt=""
+      sizes={targetSrc.width}
+      widths={[targetSrc.width]}
+      width={targetSrc.width}
+      height={targetSrc.height}
+    />
+  )
+}
+
+<style>
+  :global(picture) {
+    padding-inline: calc(var(--space-1) / 2);
+  }
+  img {
+    background: #f1eef5;
+  }
+</style>
