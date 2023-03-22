@@ -126,6 +126,14 @@
   --bdrs-sm: 0.1875rem;
 }
 
+@supports (color: oklch(88.9% 0.192 194.87)) {
+  :root {
+    --blue-500: oklch(83.9% 0.192 194.87);
+
+    --ui-secondary: oklch(80.43% 0.177 62.35757074232738);
+  }
+}
+
 * {
   --max-screen-size: var(--screen-max, 1200);
   --min-screen-size: var(--screen-min, 375);
