@@ -25,11 +25,17 @@ sections.forEach((section) => {
   const confirming = section.querySelector(".button-group-confirm");
   const resetBtns = section.querySelector(".reset-buttons");
 
+  // function createBox(count) {
+  //   const box = document.createElement("div");
+  //   box.classList.add("box", `box-${count}`);
+  //   box.textContent = `box-${count}`;
+  //   return box;
+  // }
   function createBox(count) {
-    const box = document.createElement("div");
-    box.classList.add("box");
-    box.classList.add(`box-${count}`);
-    box.textContent = `box-${count}`;
+    const box = Object.assign(document.createElement("div"), {
+      className: `box box-${count}`,
+      textContent: `box-${count}`,
+    });
     return box;
   }
 
