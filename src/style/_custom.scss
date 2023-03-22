@@ -272,12 +272,6 @@ main {
 
   --before-opacity: 0.8;
   --animation-name: move;
-
-  .small-label {
-    // --font-stretch: 100;
-    // transform: scale(1.1);
-    // transition: 0.3s transform;
-  }
 }
 
 @keyframes move {
